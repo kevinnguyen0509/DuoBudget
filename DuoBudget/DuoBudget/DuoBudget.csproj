@@ -131,6 +131,11 @@
     <Content Include="Content\Default\bootstrap-theme.min.css" />
     <Content Include="Content\Default\bootstrap.css" />
     <Content Include="Content\Default\bootstrap.min.css" />
+    <Content Include="Content\Image\JumboBg.jpg" />
+    <Content Include="Content\Index\Index.css" />
+    <Content Include="Content\Navigation\Navigation.css" />
+    <Content Include="Content\Shared\BodyContainer.css" />
+    <Content Include="Content\Shared\ThemeColors.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

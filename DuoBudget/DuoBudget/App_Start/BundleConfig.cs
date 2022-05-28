@@ -24,7 +24,10 @@ namespace DuoBudget
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Default/bootstrap.css",
-                      "~/Content/Default/site.css"));
+                      "~/Content/Default/site.css",
+                      "~/Content/Navigation/Navigation.css",
+                      "~/Content/Shared/ThemeColors.css",
+                      "~/Content/Shared/BodyContainer.css"));
         }
     }
 }

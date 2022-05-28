@@ -1,0 +1,29 @@
+﻿/*
+    #f8f9fd - component background - color
+    #3547ac - Medium Purple
+    #3546aa - Hover Purple
+    #dce2f4 - light Purple
+    #f1582f - orange
+    #ffffff - background
+    #0e1455 - text Deep purple color
+
+*/
+
+.ButtonComponent {
+    color: #FFFFFF;
+    background: #3547ac;
+    border: none;
+    transition: 0.75s;
+}
+
+    .ButtonComponent:hover {
+        background: #5d69bb;
+
+    }
+
+.middleContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #e6e9f1;
+    border-radius: 5px;
+}

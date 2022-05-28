@@ -1,0 +1,17 @@
+﻿/*
+    #f8f9fd - component background - color
+    #3547ac - Medium Purple
+    #3546aa - Hover Purple
+    #dce2f4 - light Purple
+    #f1582f - orange
+    #ffffff - background
+    #0e1455 - text Deep purple color
+
+*/
+
+.ComponentContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+}

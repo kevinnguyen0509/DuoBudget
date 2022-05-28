@@ -1,0 +1,5 @@
+﻿.jumbotron {
+    background-image: url("../../Content/Image/JumboBg.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
