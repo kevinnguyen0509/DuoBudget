@@ -8,9 +8,10 @@ namespace DuoBudget.Controllers
 {
     public class HomeController : Controller
     {
+        string IndexRoute = "~/Views/Home/Index/Index.cshtml";
         public ActionResult Index()
         {
-            return View();
+            return View(IndexRoute);
         }
     }
 }
