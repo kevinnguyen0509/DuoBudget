@@ -27,7 +27,8 @@ namespace DuoBudget
                       "~/Content/Default/site.css",
                       "~/Content/Navigation/Navigation.css",
                       "~/Content/Shared/ThemeColors.css",
-                      "~/Content/Shared/BodyContainer.css"));
+                      "~/Content/Shared/BodyContainer.css",
+                      "~/Content/font-awesome.min.css"));
         }
     }
 }

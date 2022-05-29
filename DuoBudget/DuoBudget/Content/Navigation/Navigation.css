@@ -12,11 +12,26 @@
 .navbarMain {
     background: #0e1455;
     border: none;
+    
 }
+
+.navIcon {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto 20px;
+    
+}
+
+    .navIcon:before {
+        font-size: 28px;
+        color: #3546aa;
+        cursor: pointer;
+    }
 
 #secondNavBar {
     display: flex;
     justify-content: center;
+    align-content: center;
     background: #e9eaee;
     height: 50px;
     margin: 15px 0px;
