@@ -4,14 +4,34 @@
 }
 
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <button class="btn btn-primary btn-lg ButtonComponent"> Learn more &raquo;</button>
+<div class="row jumbotron">
+    <div class="col-xs-12 col-md-6" id="MonthlySumaryContainer">
+        <h2>Monthly Summary:</h2>
+        <h3 class="TextColor">June: $8450</h3>
+        <h4 class="TextColor">10000 - 2000 + 450</h4>
+        <button class="btn btn-primary btn-lg ButtonComponent">View/Edit</button>
     </div>
 
-    <div class="row" id="BudgetSheetRow">
-        @Html.Partial("~/Views/Home/Index/_VariableExpenseTable.cshtml")
-        @Html.Partial("~/Views/Home/Index/_FixedExpenseTable.cshtml")
-    </div> <!--End BUdgetsheet-->
+    <div class="col-xs-12 col-md-6" id="YearlySumaryContainer">
+        <h2>Yearly Summary:</h2>
+        <h3 class="TextColor">2022: $8450</h3>
+        <h4 class="TextColor">10000 - 2000 + 450</h4>
+        <button class="btn btn-primary btn-lg ButtonComponent">View/Edit</button>
+    </div>
+
+
+</div>
+<div class="row" id="secondNavBar">
+    <p>BudgetSheet</p>
+    <p>|</p>
+    <p>Graphs</p>
+    <p>|</p>
+    <p>All</p>
+</div>
+
+<div class="row" id="BudgetSheetRow">
+    @Html.Partial("~/Views/Home/Index/_VariableExpenseTable.cshtml")
+    @Html.Partial("~/Views/Home/Index/_FixedExpenseTable.cshtml")
+    @Html.Partial("~/Views/Home/Index/_SplitExpenseTable.cshtml")
+</div> <!--End BUdgetsheet-->
 

@@ -167,6 +167,7 @@
     <Content Include="Views\Home\Index\Index.cshtml" />
     <Content Include="Views\Home\Index\_VariableExpenseTable.cshtml" />
     <Content Include="Views\Home\Index\_FixedExpenseTable.cshtml" />
+    <Content Include="Views\Home\Index\_SplitExpenseTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

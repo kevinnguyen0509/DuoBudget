@@ -13,12 +13,30 @@
     background-image: url("../../Content/Image/JumboBg.jpg") !important;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 5px;
+}
+
+#MonthlySumaryContainer {
+    background: rgba(204, 204, 204, 0.2);
+    padding: 25px;
+    
+}
+
+#YearlySumaryContainer {
+    background: rgb(176 123 191 / 0.20);
+    padding: 25px;
+    text-align: right;
 }
 
 .TableComponentContainer {
-
-    height: 400px;
+    height: 300px;
     background: #f8f9fd;
-    overflow-y: scroll;
-    
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.TableHeaderSplit {
+    background: #0e1455;
+    color: #ffffff;
+    height: auto !important;
 }

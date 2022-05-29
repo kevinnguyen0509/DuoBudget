@@ -9,9 +9,19 @@
 
 */
 
-.navbar {
+.navbarMain {
     background: #0e1455;
     border: none;
+}
+
+#secondNavBar {
+    display: flex;
+    justify-content: center;
+    background: #e9eaee;
+    height: 50px;
+    margin: 15px 0px;
+    text-align: center;
+    padding: 10px;
 }
 
 a {

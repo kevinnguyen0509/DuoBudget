@@ -5,6 +5,9 @@
     
 }
 
+h1,h2{
+    color: #FFFFFF !important;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
