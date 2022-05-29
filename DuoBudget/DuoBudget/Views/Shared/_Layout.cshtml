@@ -7,7 +7,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+@Html.Partial("~/Views/UtilComponents/_Overlay.cshtml")
 <body>
+
     <div class="navbar navbar-inverse navbar-fixed-top navbarMain">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -26,6 +28,7 @@
         </div>
     </div>
     <div class="container-fluid body-content">
+
         <div class="container-fluid body-content middleContainer">
             <div class="container-fluid ComponentContainer" style="padding-top: 0px;">
                 @RenderBody()
@@ -39,8 +42,8 @@
         </div>
     </div>
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,68 @@
+﻿.LoadingDotAnimation {
+    animation: shrinkGrow 6s infinite;
+
+}
+
+.LoadingDotAnimation2 {
+    animation: shrinkGrow 6s infinite;
+    animation-delay: 0.30s;
+}
+
+.LoadingDotAnimation3 {
+    animation: shrinkGrow 6s infinite;
+    animation-delay: 0.60s;
+}
+
+.swaySideToSide {
+    animation: swaySideToSide 5s infinite;
+    animation-delay: 0.60s;
+}
+
+@keyframes shrinkGrow {
+    0% {
+        height: 100%;
+        width:100%;
+    }
+
+    25% {
+        height: 0%;
+        width: 0%;
+    }
+
+    50% {
+        height: 100%;
+        width: 100%;
+    }
+
+    75% {
+        height: 0%;
+        width: 0%;
+    }
+
+    100% {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@keyframes swaySideToSide {
+    0% {
+        transform: rotate(0deg) ;
+
+    }
+
+    25% {
+        transform: rotate(10deg)
+    }
+
+    75% {
+        transform: rotate(-10deg)
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+

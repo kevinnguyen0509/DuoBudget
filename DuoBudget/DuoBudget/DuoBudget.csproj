@@ -127,6 +127,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Animations\Loading\LoadingAnimation.css" />
     <Content Include="Content\Default\bootstrap-theme.css" />
     <Content Include="Content\Default\bootstrap-theme.min.css" />
     <Content Include="Content\Default\bootstrap.css" />
@@ -137,6 +138,7 @@
     <Content Include="Content\Index\Index.css" />
     <Content Include="Content\Navigation\Navigation.css" />
     <Content Include="Content\Shared\BodyContainer.css" />
+    <Content Include="Content\Shared\Overlay.css" />
     <Content Include="Content\Shared\ThemeColors.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -176,6 +178,8 @@
     <Content Include="Views\Home\Index\_VariableExpenseTable.cshtml" />
     <Content Include="Views\Home\Index\_FixedExpenseTable.cshtml" />
     <Content Include="Views\Home\Index\_SplitExpenseTable.cshtml" />
+    <Content Include="Views\UtilComponents\_Loading.cshtml" />
+    <Content Include="Views\UtilComponents\_Overlay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
