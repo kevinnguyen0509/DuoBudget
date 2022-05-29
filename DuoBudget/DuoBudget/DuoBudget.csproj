@@ -120,10 +120,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataFatory\DeleteData.cs" />
+    <Compile Include="DataFatory\GetData\GetBudgetSheetData.cs" />
+    <Compile Include="DataFatory\GetData\GetUserData.cs" />
+    <Compile Include="DataFatory\SaveData.cs" />
+    <Compile Include="DataFatory\UpdateData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BudgetModels\VariableExpenseModel.cs" />
+    <Compile Include="Models\Components\DrowDownOptions.cs" />
+    <Compile Include="Models\Parents\BudgetTable.cs" />
+    <Compile Include="Models\Interfaces\IBudgetForm.cs" />
+    <Compile Include="Models\ResultMessage.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewModels\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +149,10 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Image\JumboBg.jpg" />
     <Content Include="Content\Index\Index.css" />
+    <Content Include="Content\Login\Login.css" />
     <Content Include="Content\Navigation\Navigation.css" />
     <Content Include="Content\Shared\BodyContainer.css" />
+    <Content Include="Content\Shared\Loading.css" />
     <Content Include="Content\Shared\Overlay.css" />
     <Content Include="Content\Shared\ThemeColors.css" />
     <Content Include="favicon.ico" />
@@ -180,10 +195,11 @@
     <Content Include="Views\Home\Index\_SplitExpenseTable.cshtml" />
     <Content Include="Views\UtilComponents\_Loading.cshtml" />
     <Content Include="Views\UtilComponents\_Overlay.cshtml" />
+    <Content Include="Views\Home\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Authentication\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

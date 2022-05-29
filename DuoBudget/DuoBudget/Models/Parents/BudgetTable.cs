@@ -1,5 +1,5 @@
-﻿using DuoBudget.Models.Interfaces;
-using DuoBudget.Models.Parents;
+﻿using DuoBudget.DataFatory.GetData;
+using DuoBudget.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,9 @@ using System.Web;
 
 namespace DuoBudget.Models
 {
-    public class BudgetTable : Calculation, IBudgetForm<BudgetTable>
+    public class BudgetTable : ResultMessage
     {
+       
         public int ID { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
@@ -21,9 +22,17 @@ namespace DuoBudget.Models
         public Decimal Total { get; set; }//This is obtained by calculating all rows in the budget table
 
 
-        public List<BudgetTable> GetExpenses(int OwnerID)
+        /// <summary>
+        /// This will calcuate the total for the specific budget item
+        /// </summary>
+        /// <param name="ListOfNumbers">Takes in a list of expenses</param>
+        /// <returns>A total after adding up everything from the list</returns>
+        public int CalculateBudgetTableTotal(List<int> ListOfNumbers)
         {
-            throw new NotImplementedException();
+            int total = 0;
+            return total;
         }
+
+
     }
 }

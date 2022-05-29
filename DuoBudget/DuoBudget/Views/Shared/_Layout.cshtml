@@ -7,9 +7,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-@Html.Partial("~/Views/UtilComponents/_Overlay.cshtml")
-<body>
 
+<body>
+    @Html.Partial("~/Views/UtilComponents/_Overlay.cshtml")
     <div class="navbar navbar-inverse navbar-fixed-top navbarMain">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -23,6 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
                 </ul>
             </div>
         </div>

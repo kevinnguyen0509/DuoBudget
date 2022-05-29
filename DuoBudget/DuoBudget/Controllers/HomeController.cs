@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DuoBudget.Models;
+using DuoBudget.Models.BudgetModels;
+using DuoBudget.Models.Interfaces;
+using DuoBudget.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +12,36 @@ namespace DuoBudget.Controllers
 {
     public class HomeController : Controller
     {
+        User LoggedInuser = new User();
+        IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
+        
+
+        public static string LoginPath = "/Views/Home/Login/Login.cshtml";
         string IndexRoute = "~/Views/Home/Index/Index.cshtml";
         public ActionResult Index()
         {
-            return View(IndexRoute);
+            HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
+            if (CurrentUserCookie == null)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {                        
+                //Get User cookie and their expenses         
+                LoggedInuser = LoggedInuser.GetLoggedInUserCookie();
+                List<VariableExpenseModel> VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID);
+
+                //IndexViewModel
+                IndexViewModel indexViewModel = new IndexViewModel(LoggedInuser, VariableExpenseList);
+
+                return View(IndexRoute, indexViewModel);
+            }
+            
+        }
+
+        public ActionResult Login()
+        {
+            return View(LoginPath);
         }
     }
 }

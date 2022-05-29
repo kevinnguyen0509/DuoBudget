@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuoBudget.Models.BudgetModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DuoBudget.Models.Interfaces
 {
     interface IBudgetForm<T>
     {
-         List<BudgetTable> GetExpenses(int OwnerID);
+         List<VariableExpenseModel> GetExpenses(int OwnerID);
 
     }
 }
