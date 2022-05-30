@@ -12,35 +12,32 @@ namespace DuoBudget.Controllers
 {
     public class HomeController : Controller
     {
-        User LoggedInuser = new User();
-        IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
+        //Variables to communicate with Database
+        User LoggedInuser = new User();    
         BudgetTable budgetTable = new BudgetTable();
+        IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
 
+        //Static paths
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
-        string IndexRoute = "~/Views/Home/Index/Index.cshtml";
+        public static string IndexRoute = "~/Views/Home/Index/Index.cshtml";
+
         public ActionResult Index()
         {
+            //Checks to see if the user is logged in.
             HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
-            if (CurrentUserCookie == null)
-            {
-                return RedirectToAction("Login");
-            }
-            else
-            {                        
-                //Get User cookie and their expenses         
-                LoggedInuser = LoggedInuser.GetLoggedInUserCookie();
-                List<VariableExpenseModel> VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID);
-                
-                //IndexViewModel
-                IndexViewModel indexViewModel = new IndexViewModel
-                {
-                    User = LoggedInuser,
-                    VariableExpenseList = VariableExpenseList,
-                    Categories = budgetTable.getAllCategories()
-                };
 
-                return View(IndexRoute, indexViewModel);
-            }
+            if (CurrentUserCookie == null)
+                return RedirectToAction("Login");
+                                   
+            IndexViewModel indexViewModel = new IndexViewModel
+            {
+                User = LoggedInuser.GetLoggedInUserCookie(),
+                VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID),
+                Categories = budgetTable.getAllCategories()
+            };
+
+            return View(IndexRoute, indexViewModel);
+
             
         }
 
