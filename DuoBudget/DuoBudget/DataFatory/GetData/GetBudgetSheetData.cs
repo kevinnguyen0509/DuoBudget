@@ -12,6 +12,69 @@ namespace DuoBudget.DataFatory.GetData
 {
     public class GetBudgetSheetData
     {
+
+
+
+
+
+        public List<IncomeModel> getAllIncomeListThisMonth(int month, int year, int userId)
+        {
+
+            List<IncomeModel> incomeList = new List<IncomeModel>();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[ssp_BudgetSheet_GetIncomeByIDAndCurrentMonthAndYear]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", userId);
+            SQLComm.Parameters.AddWithValue("@CurrentMonth", month);
+            SQLComm.Parameters.AddWithValue("@CurrentYear", year);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                if (SQLRec.HasRows)
+                {
+                    while (SQLRec.Read())
+                    {
+                        incomeList.Add(new IncomeModel
+                        {
+                            ID = SQLRec.GetInt32(SQLRec.GetOrdinal("ID")),
+                            UserId = SQLRec.GetInt32(SQLRec.GetOrdinal("UserId")),
+                            Title = SQLRec.GetString(SQLRec.GetOrdinal("Title")),
+                            Date = SQLRec.GetDateTime(SQLRec.GetOrdinal("IncomeDate")),
+                            Description = SQLRec.GetString(SQLRec.GetOrdinal("Description")),
+                            Amount = SQLRec.GetDecimal(SQLRec.GetOrdinal("Amount"))
+                        });
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                incomeList.Add(new IncomeModel
+                {
+                    ReturnMessage = e.Message,
+                    ReturnStatus = "Failed",
+                    newId = -1
+                });
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return incomeList;
+        }
+
         /// <summary>
         /// Gets All Variable expense for this month and year for the user logged in
         /// </summary>
@@ -125,7 +188,6 @@ namespace DuoBudget.DataFatory.GetData
 
                         });
                     }
-
                 }
             }
             catch(Exception e)

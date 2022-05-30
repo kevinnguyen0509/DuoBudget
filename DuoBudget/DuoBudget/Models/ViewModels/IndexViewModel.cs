@@ -14,5 +14,6 @@ namespace DuoBudget.Models.ViewModels
         public List<DropDownOptions> Categories { get; set; }
         public List<FixedExpenseModel> FixedExpenses { get; set; }
         public List<SplitExpenseModel> SplitExpenses { get; set; }
+        public List<IncomeModel> IncomeThisMonth { get; set; }
     }
 }

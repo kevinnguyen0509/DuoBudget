@@ -18,6 +18,7 @@ namespace DuoBudget.Controllers
         IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
         IBudgetForm<FixedExpenseModel> FixedExpenseOptions = new FixedExpenseModel();
         IBudgetForm<SplitExpenseModel> SplitExpenseOptions = new SplitExpenseModel();
+        IBudgetForm<IncomeModel> IncomeModelOptions = new IncomeModel();
 
         //Static paths
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
@@ -38,7 +39,8 @@ namespace DuoBudget.Controllers
                 VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID),
                 Categories = budgetTable.getAllCategories(),
                 FixedExpenses = FixedExpenseOptions.GetExpenses(LoggedInuser.ID),
-                SplitExpenses = SplitExpenseOptions.GetExpenses(LoggedInuser.ID)
+                SplitExpenses = SplitExpenseOptions.GetExpenses(LoggedInuser.ID),
+                IncomeThisMonth = IncomeModelOptions.GetExpenses(LoggedInuser.ID)
             };
 
             return View(IndexRoute, indexViewModel);

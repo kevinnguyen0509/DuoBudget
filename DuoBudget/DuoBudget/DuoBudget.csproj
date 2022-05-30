@@ -131,6 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BudgetModels\FixedExpenseModel.cs" />
+    <Compile Include="Models\BudgetModels\IncomeModel.cs" />
     <Compile Include="Models\BudgetModels\SplitExpenseModel.cs" />
     <Compile Include="Models\BudgetModels\VariableExpenseModel.cs" />
     <Compile Include="Models\Components\DropDownOptions.cs" />
@@ -152,6 +153,7 @@
     <Content Include="Content\Image\JumboBg.jpg" />
     <Content Include="Content\Index\Index.css" />
     <Content Include="Content\Login\Login.css" />
+    <Content Include="Content\Modals\Shared.css" />
     <Content Include="Content\Navigation\Navigation.css" />
     <Content Include="Content\Shared\BodyContainer.css" />
     <Content Include="Content\Shared\Loading.css" />
@@ -198,6 +200,8 @@
     <Content Include="Views\UtilComponents\_Loading.cshtml" />
     <Content Include="Views\UtilComponents\_Overlay.cshtml" />
     <Content Include="Views\Home\Login\Login.cshtml" />
+    <Content Include="Views\Shared\_Modals.cshtml" />
+    <Content Include="Views\Home\Index\_IncomeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

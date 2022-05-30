@@ -1,65 +1,67 @@
 ﻿@model DuoBudget.Models.ViewModels.IndexViewModel
 
-<div class="col-xs-12 col-md-6 TableComponentContainer">
-    <h3 class="text-center TextColor">Fixed Expenses</h3>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="TableHeaderFixed">Title</th>
-                <th scope="col" class="TableHeaderFixed">Date</th>
-                <th scope="col" class="TableHeaderFixed">Description</th>
-                <th scope="col" class="TableHeaderFixed">Category</th>
-                <th scope="col" class="TableHeaderFixed">Amount</th>
-                <th scope="col" class="TableHeaderFixed">Split?</th>
-            </tr>
-        </thead>
-        <tbody>
 
-            <tr>
-                <th scope="row" class="tableFields"> <input type="text" name="fixedTitle" class="form-control " id="fixedTitle" aria-describedby="titleHelp" placeholder="Title" title="Title"></th>
-                <td class="tableFields"><input type="date" class="form-control" name="fixedDate" id="fixedDate" title="Fixed Title"></td>
-                <td> <textarea name="fixedDescription" title="fixedDescription" class="form-control" id="fixedDescription" rows="1"></textarea></td>
-                <td>
-                    <select class="form-control" name="fixedCategories" id="fixedCategories">
+<h3 class="text-center TextColor">Fixed Expenses <i class="fa fa-edit fa-1x"></i></h3>
 
-                        <option value="misc">misc </option>
-                        @foreach (var category in Model.Categories)
-                        {
-                            <option value="@category.Option">@category.Option</option>
-                        }
+    
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="TableHeaderFixed">Title</th>
+            <th scope="col" class="TableHeaderFixed">Date</th>
+            <th scope="col" class="TableHeaderFixed">Description</th>
+            <th scope="col" class="TableHeaderFixed">Category</th>
+            <th scope="col" class="TableHeaderFixed">Amount</th>
+            <th scope="col" class="TableHeaderFixed">Split?</th>
+        </tr>
+    </thead>
+    <tbody>
 
-                    </select>
-                </td>
-                <td class="tableFields"><input type="number" name="fixedAmount" class="form-control " id="fixedAmount" aria-describedby="titleHelp" placeholder="$0.00" title="Fixed Amount" step='0.01' value='0.00'></td>
-                <td class="tableFields">
-                    <div class="form-check">
-                        <input class="form-check-input form-control" type="checkbox" value="" id="fixedExpenseClickCbo">
+        <tr>
+            <th scope="row" class="tableFields"> <input type="text" name="fixedTitle" class="form-control " id="fixedTitle" aria-describedby="titleHelp" placeholder="Title" title="Title"></th>
+            <td class="tableFields"><input type="date" class="form-control" name="fixedDate" id="fixedDate" title="Fixed Title"></td>
+            <td> <textarea name="fixedDescription" title="fixedDescription" class="form-control" id="fixedDescription" rows="1"></textarea></td>
+            <td>
+                <select class="form-control" name="fixedCategories" id="fixedCategories">
 
-                    </div>
-                </td>
-            </tr>
-
-            @foreach (var FixedExpense in Model.FixedExpenses)
-            {
-                string[] date = FixedExpense.Date.ToString().Split(' ');
-                <tr>
-                    <th scope="row" variableId="@FixedExpense.ID">@FixedExpense.Title</th>
-                    <td>@date[0]</td>
-                    <td>@FixedExpense.Description</td>
-                    <td>@FixedExpense.Category</td>
-                    <td>$@FixedExpense.Amount</td>
-                    @if (FixedExpense.Split)
+                    <option value="misc">misc </option>
+                    @foreach (var category in Model.Categories)
                     {
-                        <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
-
+                        <option value="@category.Option">@category.Option</option>
                     }
-                    else
-                    {
-                        <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
 
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                </select>
+            </td>
+            <td class="tableFields"><input type="number" name="fixedAmount" class="form-control " id="fixedAmount" aria-describedby="titleHelp" placeholder="$0.00" title="Fixed Amount" step='0.01' value='0.00'></td>
+            <td class="tableFields">
+                <div class="form-check">
+                    <input class="form-check-input form-control" type="checkbox" value="" id="fixedExpenseClickCbo">
+
+                </div>
+            </td>
+        </tr>
+
+        @foreach (var FixedExpense in Model.FixedExpenses)
+        {
+            string[] date = FixedExpense.Date.ToString().Split(' ');
+            <tr>
+                <th scope="row" variableId="@FixedExpense.ID">@FixedExpense.Title</th>
+                <td>@date[0]</td>
+                <td>@FixedExpense.Description</td>
+                <td>@FixedExpense.Category</td>
+                <td>$@FixedExpense.Amount</td>
+                @if (FixedExpense.Split)
+                {
+                    <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
+
+                }
+                else
+                {
+                    <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
+
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
