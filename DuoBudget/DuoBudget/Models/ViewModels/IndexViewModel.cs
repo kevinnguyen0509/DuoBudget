@@ -12,5 +12,6 @@ namespace DuoBudget.Models.ViewModels
         public User User { get; set; }
         public List<VariableExpenseModel> VariableExpenseList { get; set; }
         public List<DropDownOptions> Categories { get; set; }
+        public List<FixedExpenseModel> FixedExpenses { get; set; }
     }
 }

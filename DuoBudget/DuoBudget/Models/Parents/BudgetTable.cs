@@ -22,7 +22,6 @@ namespace DuoBudget.Models
         public bool Split { get; set; }
         public Decimal Total { get; set; }//This is obtained by calculating all rows in the budget table
 
-
         /// <summary>
         /// This will calcuate the total for the specific budget item
         /// </summary>

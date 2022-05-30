@@ -16,6 +16,7 @@ namespace DuoBudget.Controllers
         User LoggedInuser = new User();    
         BudgetTable budgetTable = new BudgetTable();
         IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
+        IBudgetForm<FixedExpenseModel> FixedExpenseOptions = new FixedExpenseModel();
 
         //Static paths
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
@@ -26,6 +27,7 @@ namespace DuoBudget.Controllers
             //Checks to see if the user is logged in.
             HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
 
+
             if (CurrentUserCookie == null)
                 return RedirectToAction("Login");
                                    
@@ -33,7 +35,8 @@ namespace DuoBudget.Controllers
             {
                 User = LoggedInuser.GetLoggedInUserCookie(),
                 VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID),
-                Categories = budgetTable.getAllCategories()
+                Categories = budgetTable.getAllCategories(),
+                FixedExpenses = FixedExpenseOptions.GetExpenses(LoggedInuser.ID)
             };
 
             return View(IndexRoute, indexViewModel);

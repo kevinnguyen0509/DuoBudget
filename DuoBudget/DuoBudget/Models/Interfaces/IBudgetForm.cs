@@ -9,7 +9,7 @@ namespace DuoBudget.Models.Interfaces
 {
     interface IBudgetForm<T>
     {
-         List<VariableExpenseModel> GetExpenses(int OwnerID);
+         List<T> GetExpenses(int OwnerID);
 
     }
 }

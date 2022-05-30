@@ -130,6 +130,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BudgetModels\FixedExpenseModel.cs" />
     <Compile Include="Models\BudgetModels\VariableExpenseModel.cs" />
     <Compile Include="Models\Components\DropDownOptions.cs" />
     <Compile Include="Models\Parents\BudgetTable.cs" />

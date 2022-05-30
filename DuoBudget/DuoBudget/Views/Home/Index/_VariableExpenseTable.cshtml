@@ -39,7 +39,7 @@
             @foreach (var VariableExpense in Model.VariableExpenseList)
             {
                 <tr>
-                    <th scope="row">@VariableExpense.Title</th>
+                    <th scope="row" variableId="@VariableExpense.ID">@VariableExpense.Title</th>
                     <td>@VariableExpense.Date</td>
                     <td>@VariableExpense.Description</td>
                     <td>@VariableExpense.Category</td>
