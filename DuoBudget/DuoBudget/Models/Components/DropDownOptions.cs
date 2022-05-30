@@ -5,9 +5,9 @@ using System.Web;
 
 namespace DuoBudget.Models.Components
 {
-    public class DrowDownOptions
+    public class DropDownOptions : ResultMessage
     {
         public int ID { get; set; }
-        public string Category { get; set; }
+        public string Option { get; set; }
     }
 }

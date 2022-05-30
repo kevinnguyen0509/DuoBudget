@@ -1,5 +1,6 @@
 ﻿using DuoBudget.Models;
 using DuoBudget.Models.BudgetModels;
+using DuoBudget.Models.Components;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -65,14 +66,59 @@ namespace DuoBudget.DataFatory.GetData
                 }
 
             }
-
             SQLRec.Close();
             SQLConn.Close();
-
-
-
-
             return expenseList;
+        }
+
+        public List<DropDownOptions> getAllCategories()
+        {
+            List<DropDownOptions> categories = new List<DropDownOptions>();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetAllCategories]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLRec = SQLComm.ExecuteReader();
+            try
+            {
+                if (SQLRec.HasRows)
+                {
+                    while (SQLRec.Read())
+                    {
+                        categories.Add(new DropDownOptions
+                        {
+                            ID = SQLRec.GetInt32(SQLRec.GetOrdinal("ID")),
+                            Option = SQLRec.GetString(SQLRec.GetOrdinal("Category"))
+                        });
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                categories.Add(new DropDownOptions
+                {
+                    ReturnMessage = e.Message,
+                    ReturnStatus = "Failed",
+                    newId = -1
+                });
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();              
+            }
+            return categories;
+
         }
     }
 }

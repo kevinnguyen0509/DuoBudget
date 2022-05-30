@@ -1,4 +1,5 @@
 ﻿using DuoBudget.DataFatory.GetData;
+using DuoBudget.Models.Components;
 using DuoBudget.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,12 @@ namespace DuoBudget.Models
         {
             int total = 0;
             return total;
+        }
+
+        public List<DropDownOptions> getAllCategories()
+        {
+            GetBudgetSheetData getData = new GetBudgetSheetData();
+            return getData.getAllCategories();
         }
 
 

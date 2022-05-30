@@ -131,7 +131,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BudgetModels\VariableExpenseModel.cs" />
-    <Compile Include="Models\Components\DrowDownOptions.cs" />
+    <Compile Include="Models\Components\DropDownOptions.cs" />
     <Compile Include="Models\Parents\BudgetTable.cs" />
     <Compile Include="Models\Interfaces\IBudgetForm.cs" />
     <Compile Include="Models\ResultMessage.cs" />

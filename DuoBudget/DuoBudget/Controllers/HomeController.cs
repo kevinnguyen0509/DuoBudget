@@ -14,7 +14,7 @@ namespace DuoBudget.Controllers
     {
         User LoggedInuser = new User();
         IBudgetForm<VariableExpenseModel> VariableExpenseOptions = new VariableExpenseModel();
-        
+        BudgetTable budgetTable = new BudgetTable();
 
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
         string IndexRoute = "~/Views/Home/Index/Index.cshtml";
@@ -30,9 +30,14 @@ namespace DuoBudget.Controllers
                 //Get User cookie and their expenses         
                 LoggedInuser = LoggedInuser.GetLoggedInUserCookie();
                 List<VariableExpenseModel> VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID);
-
+                
                 //IndexViewModel
-                IndexViewModel indexViewModel = new IndexViewModel(LoggedInuser, VariableExpenseList);
+                IndexViewModel indexViewModel = new IndexViewModel
+                {
+                    User = LoggedInuser,
+                    VariableExpenseList = VariableExpenseList,
+                    Categories = budgetTable.getAllCategories()
+                };
 
                 return View(IndexRoute, indexViewModel);
             }
