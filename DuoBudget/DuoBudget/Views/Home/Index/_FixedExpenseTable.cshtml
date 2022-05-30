@@ -41,9 +41,10 @@
 
             @foreach (var FixedExpense in Model.FixedExpenses)
             {
+                string[] date = FixedExpense.Date.ToString().Split(' ');
                 <tr>
                     <th scope="row" variableId="@FixedExpense.ID">@FixedExpense.Title</th>
-                    <td>@FixedExpense.Date</td>
+                    <td>@date[0]</td>
                     <td>@FixedExpense.Description</td>
                     <td>@FixedExpense.Category</td>
                     <td>$@FixedExpense.Amount</td>

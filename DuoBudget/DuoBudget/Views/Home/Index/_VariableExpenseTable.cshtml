@@ -35,24 +35,22 @@
                 </td>
             </tr>
 
-
             @foreach (var VariableExpense in Model.VariableExpenseList)
             {
+                string[] date = VariableExpense.Date.ToString().Split(' ');
                 <tr>
                     <th scope="row" variableId="@VariableExpense.ID">@VariableExpense.Title</th>
-                    <td>@VariableExpense.Date</td>
+                    <td>@date[0]</td>
                     <td>@VariableExpense.Description</td>
                     <td>@VariableExpense.Category</td>
                     <td>$@VariableExpense.Amount</td>
                     @if (VariableExpense.Split)
                     {
                         <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
-
                     }
                     else
                     {
                         <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
-
                     }
                 </tr>
             }

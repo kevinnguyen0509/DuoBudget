@@ -1,4 +1,7 @@
-﻿<div class="col-xs-12 col-md-12 TableComponentContainer SplitContainer">
+﻿@model DuoBudget.Models.ViewModels.IndexViewModel
+
+
+<div class="col-xs-12 col-md-12 TableComponentContainer SplitContainer">
     <h3 class="text-center TextColor">Split Expenses</h3>
     <table class="table">
         <thead class="thead-dark">
@@ -12,33 +15,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Mark</td>
-                <td>Otto</td>
+            @foreach (var expenseEntry in Model.SplitExpenses)
+            {
+                string[] date = expenseEntry.Date.ToString().Split(' ');
 
+                <tr>
+                    <th scope="row">@expenseEntry.Title</th>
+                    <td>@date[0]</td>
+                    <td>@expenseEntry.Description</td>
+                    <td>@expenseEntry.Category</td>
+                    <td>@(expenseEntry.Amount/2)</td>
+                </tr>
 
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Mark</td>
-                <td>Otto</td>
-
-
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>Mark</td>
-                <td>Otto</td>
-
-
-            </tr>
+               @* total = total + double.Parse(expenseEntry.Amount.ToString());*@
+            }
         </tbody>
     </table>
 </div>
