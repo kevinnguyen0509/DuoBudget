@@ -40,9 +40,8 @@
     box-shadow: 0px 7px 7px #ed8e74;
 }
 
-.TableHeaderVariable {
-
-    background: #6d0e0e;
+.TableHeaderVariable, .VariableExpenseModal {
+    background: #6d0e0e !important;
     color: #ffffff;
 }
 

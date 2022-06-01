@@ -22,3 +22,55 @@
         </div>
     </div>
 </div>
+
+<!-- Income Modal -->
+<div class="modal fade" id="VariableExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h3 class="modal-title" id="exampleModalLabel">Variable Expenses | Edit</h3>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/Home/Index/_VariableExpenseTable.cshtml", Model)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary ButtonComponent" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fixed Modal -->
+<div class="modal fade" id="FixedExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h3 class="modal-title" id="exampleModalLabel">Fixed Expenses | Edit</h3>
+                <button type="button" class="btn btn-info">Transfer Fixed Expenses</button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/Home/Index/_FixedExpenseTable.cshtml", Model)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary ButtonComponent" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Split Modal -->
+<div class="modal fade" id="SplitExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h3 class="modal-title" id="exampleModalLabel">Split Expenses | Edit</h3>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/Home/Index/_SplitExpenseTable.cshtml", Model)
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary ButtonComponent" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

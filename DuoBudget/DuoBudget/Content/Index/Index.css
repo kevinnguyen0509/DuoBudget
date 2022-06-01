@@ -40,3 +40,7 @@
     color: #ffffff;
     height: auto !important;
 }
+
+.BudgetSheeTitle{
+    cursor: pointer;
+}

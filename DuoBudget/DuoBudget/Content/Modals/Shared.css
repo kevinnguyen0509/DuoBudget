@@ -15,6 +15,7 @@
     background: #3547ac;
     color: #fff;
     border-radius: 5px;
+    justify-content: space-around;
 }
 
 .modal-title{
@@ -22,5 +23,7 @@
 }
 
 .modal-body{
-    overflow-x: auto;
+    overflow-x: hidden;
+    max-height: 500px;
 }
+
