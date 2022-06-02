@@ -122,10 +122,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="DataFatory\DeleteData.cs" />
     <Compile Include="DataFatory\GetData\GetBudgetSheetData.cs" />
     <Compile Include="DataFatory\GetData\GetUserData.cs" />
-    <Compile Include="DataFatory\SaveData.cs" />
+    <Compile Include="DataFatory\SaveData\SaveBudgetData.cs" />
     <Compile Include="DataFatory\UpdateData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,6 +207,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Authentication\" />
+    <Folder Include="Views\Json\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

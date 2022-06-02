@@ -16,5 +16,10 @@ namespace DuoBudget.Models.BudgetModels
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
             return GetData.getAllSplitExpenseThisMonth(currentMonth, currentYear, OwnerID);
         }
+
+        public ResultMessage SaveExpense(VariableExpenseModel variableExpenseModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
