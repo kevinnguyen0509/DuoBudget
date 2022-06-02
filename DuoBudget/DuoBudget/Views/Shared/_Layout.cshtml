@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    @Html.Hidden("HiddenCurrentUrl", Url.Content("~"))
+   
     @Html.Partial("~/Views/UtilComponents/_Overlay.cshtml")
 
     <div class="navbar navbar-inverse navbar-fixed-top navbarMain">
@@ -48,6 +50,6 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 </html>

@@ -29,6 +29,7 @@
     <i class="fa fa-star-o navIcon"></i>
     <i class="fa fa-calendar-o navIcon"></i>
 </div>
+@Html.Hidden("UserLoggedIn", Model.User.ID)
 
 <div class="row" id="BudgetSheetRow">
     <div class="col-xs-12 col-md-6 TableComponentContainer">
@@ -45,7 +46,8 @@
         @Html.Partial("~/Views/Home/Index/_SplitExpenseTable.cshtml", Model)
     </div>
 
-    </div> <!--End BUdgetsheet-->
+</div> <!--End BUdgetsheet-->
 
 
-    @Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
+@Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
+<script type="module" src="~/Scripts/Index/BudgetSheet/Views/VariableExpense.js"></script>

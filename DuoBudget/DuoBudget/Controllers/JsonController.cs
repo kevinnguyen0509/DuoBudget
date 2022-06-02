@@ -20,7 +20,7 @@ namespace DuoBudget.Controllers
         public JsonResult SaveVariableExpenseEntry(VariableExpenseModel variableExpenseModel)
         {
 
-            return Json(variableExpenseModel.SaveExpense(variableExpenseModel), JsonRequestBehavior.AllowGet);
+            return Json(/*VariableExpenseModel.SaveExpense(VariableExpenseModel)*/"Saving....yo...", JsonRequestBehavior.AllowGet);
         }
     }
 }

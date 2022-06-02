@@ -1,4 +1,5 @@
-﻿using DuoBudget.DataFatory.GetData;
+﻿using DuoBudget.DataFatory;
+using DuoBudget.DataFatory.GetData;
 using DuoBudget.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DuoBudget.Models.BudgetModels
     public class VariableExpenseModel : BudgetTable, IBudgetForm<VariableExpenseModel>
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
+        SaveBudgetData SaveBudgetData = new SaveBudgetData();
         
         public List<VariableExpenseModel> GetExpenses(int OwnerID)
         {
@@ -20,7 +22,7 @@ namespace DuoBudget.Models.BudgetModels
 
         public ResultMessage SaveExpense(VariableExpenseModel variableExpenseModel)
         {
-            throw new NotImplementedException();
+            return SaveBudgetData.SaveVariableExpenseEntry(variableExpenseModel);
         }
     }
 }
