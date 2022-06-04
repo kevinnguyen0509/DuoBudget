@@ -13,10 +13,7 @@ namespace DuoBudget.DataFatory.GetData
     public class GetBudgetSheetData
     {
 
-
-
-
-
+        /************************Income*********************************/
         public List<IncomeModel> getAllIncomeListThisMonth(int month, int year, int userId)
         {
 
@@ -75,6 +72,15 @@ namespace DuoBudget.DataFatory.GetData
             return incomeList;
         }
 
+
+
+
+
+
+
+
+
+        /*****************************Varaiable***********************************/
         /// <summary>
         /// Gets All Variable expense for this month and year for the user logged in
         /// </summary>

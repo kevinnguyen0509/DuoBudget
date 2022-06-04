@@ -28,19 +28,19 @@ namespace DuoBudget.Controllers
         {
             //Checks to see if the user is logged in.
             HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
-
-
+            
+            
             if (CurrentUserCookie == null)
                 return RedirectToAction("Login");
                                    
             IndexViewModel indexViewModel = new IndexViewModel
             {
                 User = LoggedInuser.GetLoggedInUserCookie(),
-                VariableExpenseList = VariableExpenseOptions.GetExpenses(LoggedInuser.ID),
+                VariableExpenseList = VariableExpenseOptions.GetExpenses(),
                 Categories = budgetTable.getAllCategories(),
-                FixedExpenses = FixedExpenseOptions.GetExpenses(LoggedInuser.ID),
-                SplitExpenses = SplitExpenseOptions.GetExpenses(LoggedInuser.ID),
-                IncomeThisMonth = IncomeModelOptions.GetExpenses(LoggedInuser.ID)
+                FixedExpenses = FixedExpenseOptions.GetExpenses(),
+                SplitExpenses = SplitExpenseOptions.GetExpenses(),
+                IncomeThisMonth = IncomeModelOptions.GetExpenses()
             };
 
             return View(IndexRoute, indexViewModel);

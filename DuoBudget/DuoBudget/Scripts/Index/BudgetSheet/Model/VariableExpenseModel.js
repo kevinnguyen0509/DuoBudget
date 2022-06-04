@@ -1,4 +1,4 @@
-﻿let baseUrl.value = document.getElementById('HiddenCurrentUrl').value;
+﻿let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 
 
 export class VariableExpenseModel{
@@ -8,12 +8,25 @@ export class VariableExpenseModel{
 
     async AddExpense(variableExpenseModel) {
         const saveResult =
-            $.ajax({
+            await $.ajax({
                 type: 'POST',
-                url: baseUrl.value + 'Json/SaveVariableExpenseEntry',
+                url: baseUrl + 'Json/SaveVariableExpenseEntry',
                 data: { variableExpenseModel },
                 success: function (ResultMessage) {
                     return ResultMessage;
+                }
+            });
+        return saveResult;
+    }
+
+    async GetAllExpenseThisMonth() {
+        const saveResult =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'Json/getAllVariableExpenseThisMonth',
+                data: { },
+                success: function (VariableExpenseModel) {
+                    return VariableExpenseModel;
                 }
             });
         return saveResult;

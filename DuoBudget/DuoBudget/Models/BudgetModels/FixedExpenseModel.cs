@@ -12,16 +12,18 @@ namespace DuoBudget.Models.BudgetModels
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
         SaveBudgetData SaveBudgetData = new SaveBudgetData();
-        public List<FixedExpenseModel> GetExpenses(int OwnerID)
+        public List<FixedExpenseModel> GetExpenses()
         {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
             int curentMonth = Int32.Parse(DateTime.Now.ToString("MM"));
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
             return GetData.getAllFixedThisMonth(curentMonth, currentYear, OwnerID);
         }
 
-        public ResultMessage SaveExpense(VariableExpenseModel variableExpenseModel)
+        public ResultMessage SaveExpense(FixedExpenseModel ExpenseModel)
         {
-            return SaveBudgetData.SaveVariableExpenseEntry(variableExpenseModel);
+            throw new NotImplementedException();
         }
     }
 }

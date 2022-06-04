@@ -13,12 +13,16 @@ document.addEventListener('keyup', function (e) {
 
         let VariableExpenseOptions = new VariableExpenseModel()
         let VariableModel = VariableExpenseOptions.CreateModel(UserId.value, Title.value, expenseDate.value,
-            expenseDescription.innerText, expenseCategories.value, expenseAmount.value, expenseSplitCheckBox.value);
+            expenseDescription.value, expenseCategories.value, expenseAmount.value, expenseSplitCheckBox.value);
 
-        VariableExpenseOptions.AddExpense(VariableModel).then(function (data) {
+        if (Title.value != null || Title.value == ''){
+            VariableExpenseOptions.AddExpense(VariableModel).then(function (ResultMessage) {
+                VariableExpenseOptions.GetAllExpenseThisMonth().then(function (VariableExpenseList) {
+                    console.log(VariableExpenseList);
+                });
+            });
+        }
 
-            console.log(data);
-        });
 
 
     }

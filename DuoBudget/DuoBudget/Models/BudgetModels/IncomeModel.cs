@@ -12,14 +12,16 @@ namespace DuoBudget.Models.BudgetModels
         GetBudgetSheetData GetData = new GetBudgetSheetData();
 
         //This will get all the Incomes
-        public List<IncomeModel> GetExpenses(int OwnerID)
+        public List<IncomeModel> GetExpenses()
         {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
             int curentMonth = Int32.Parse(DateTime.Now.ToString("MM"));
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
             return GetData.getAllIncomeListThisMonth(curentMonth, currentYear, OwnerID);
         }
 
-        public ResultMessage SaveExpense(VariableExpenseModel variableExpenseModel)
+        public ResultMessage SaveExpense(IncomeModel expenseModel)
         {
             throw new NotImplementedException();
         }
