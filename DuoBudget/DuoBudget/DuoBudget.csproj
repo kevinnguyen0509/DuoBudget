@@ -159,6 +159,7 @@
     <Content Include="Content\Shared\BodyContainer.css" />
     <Content Include="Content\Shared\Loading.css" />
     <Content Include="Content\Shared\Overlay.css" />
+    <Content Include="Content\Shared\SharedClasses.css" />
     <Content Include="Content\Shared\ThemeColors.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -205,6 +206,7 @@
     <Content Include="Views\Home\Login\Login.cshtml" />
     <Content Include="Views\Shared\_Modals.cshtml" />
     <Content Include="Views\Home\Index\_IncomeTable.cshtml" />
+    <Content Include="Views\UtilComponents\_VariableLoading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

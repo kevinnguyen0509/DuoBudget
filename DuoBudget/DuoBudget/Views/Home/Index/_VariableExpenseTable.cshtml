@@ -1,59 +1,61 @@
 ﻿@model DuoBudget.Models.ViewModels.IndexViewModel
 
    
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="TableHeaderVariable">Title</th>
-                <th scope="col" class="TableHeaderVariable">Date</th>
-                <th scope="col" class="TableHeaderVariable">Description</th>
-                <th scope="col" class="TableHeaderVariable">Category</th>
-                <th scope="col" class="TableHeaderVariable">Amount</th>
-                <th scope="col" class="TableHeaderVariable">Split?</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row" class="tableFields"> <input type="text" name="expenseTitle" class="form-control " id="expenseitle" aria-describedby="titleHelp" placeholder="Title" title="Title"></th>
-                <td class="tableFields"><input type="date" class="form-control" name="expenseDate" id="expenseDate" aria-describedby="emailHelp" placeholder="Expense Date" title="Expense Title"></td>
-                <td> <textarea name="expenseDescription" title="Expense Description" class="form-control" id="expenseDescription" rows="1"></textarea></td>
-                <td>
-                    <select class="form-control" name="expenseCategories" id="expenseCategories">
-                        <option value="misc">misc</option>
-                        @foreach (var category in Model.Categories)
-                        {
-                            <option value="@category.Option">@category.Option</option>
-                        }
-                    </select>
-                </td>
-                <td class="tableFields"><input type="number" name="expenseAmount" class="form-control " id="expenseAmount" aria-describedby="titleHelp" placeholder="$0.00" title="Expense Amount" step='0.01' value='0.00'></td>
-                <td class="tableFields">
-                    <div class="form-check">
-                        <input class="checkbox form-control" type="checkbox" value="" id="expenseSplitCheckBox">
-
-                    </div>
-                </td>
-            </tr>
-
-            @foreach (var VariableExpense in Model.VariableExpenseList)
-            {
-                string[] date = VariableExpense.Date.ToString().Split(' ');
-                <tr>
-                    <th scope="row" variableId="@VariableExpense.ID">@VariableExpense.Title</th>
-                    <td>@date[0]</td>
-                    <td>@VariableExpense.Description</td>
-                    <td>@VariableExpense.Category</td>
-                    <td>$@VariableExpense.Amount</td>
-                    @if (VariableExpense.Split)
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="TableHeaderVariable">Title</th>
+            <th scope="col" class="TableHeaderVariable">Date</th>
+            <th scope="col" class="TableHeaderVariable">Description</th>
+            <th scope="col" class="TableHeaderVariable">Category</th>
+            <th scope="col" class="TableHeaderVariable">Amount</th>
+            <th scope="col" class="TableHeaderVariable">Split?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row" class="tableFields"> <input type="text" name="expenseTitle" class="form-control " id="expenseitle" aria-describedby="titleHelp" placeholder="Title" title="Title"></th>
+            <td class="tableFields"><input type="date" class="form-control" name="expenseDate" id="expenseDate" aria-describedby="emailHelp" placeholder="Expense Date" title="Expense Title"></td>
+            <td> <textarea name="expenseDescription" title="Expense Description" class="form-control" id="expenseDescription" rows="1"></textarea></td>
+            <td>
+                <select class="form-control" name="expenseCategories" id="expenseCategories">
+                    <option value="misc">misc</option>
+                    @foreach (var category in Model.Categories)
                     {
-                        <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
+                        <option value="@category.Option">@category.Option</option>
                     }
-                    else
-                    {
-                        <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
-                    }
-                </tr>
-            }
-        </tbody>
-    </table>
+                </select>
+            </td>
+            <td class="tableFields"><input type="number" name="expenseAmount" class="form-control " id="expenseAmount" aria-describedby="titleHelp" placeholder="$0.00" title="Expense Amount" step='0.01' value='0.00'></td>
+            <td class="tableFields">
+                <div class="form-check">
+                    <input class="checkbox form-control" type="checkbox" value="" id="expenseSplitCheckBox">
+
+                </div>
+            </td>
+        </tr>
+
+        @foreach (var VariableExpense in Model.VariableExpenseList)
+        {
+            string[] date = VariableExpense.Date.ToString().Split(' ');
+            <tr>
+                <th scope="row" variableId="@VariableExpense.ID">@VariableExpense.Title</th>
+                <td>@date[0]</td>
+                <td>@VariableExpense.Description</td>
+                <td>@VariableExpense.Category</td>
+                <td>$@VariableExpense.Amount</td>
+                @if (VariableExpense.Split)
+                {
+                    <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
+                }
+                else
+                {
+                    <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
+                }
+            </tr>
+        }
+
+    </tbody>
+
+</table>
 
