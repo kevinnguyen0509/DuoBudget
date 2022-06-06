@@ -23,7 +23,7 @@ namespace DuoBudget.Models.BudgetModels
 
         public ResultMessage SaveExpense(FixedExpenseModel ExpenseModel)
         {
-            throw new NotImplementedException();
+            return SaveBudgetData.SaveFixedExpenseEntry(ExpenseModel); ;
         }
     }
 }

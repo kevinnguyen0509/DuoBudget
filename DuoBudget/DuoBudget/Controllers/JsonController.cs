@@ -11,6 +11,7 @@ namespace DuoBudget.Controllers
     public class JsonController : Controller
     {
         VariableExpenseModel variableExpenseModel = new VariableExpenseModel();
+        FixedExpenseModel fixedExpenseModel = new FixedExpenseModel();
         /****************************Variable*********************************/
 
         /// <summary>
@@ -26,6 +27,17 @@ namespace DuoBudget.Controllers
         public JsonResult getAllVariableExpenseThisMonth()
         {
             return Json(variableExpenseModel.GetExpenses(), JsonRequestBehavior.AllowGet);
+        }
+
+        /****************************Fixed Expense*********************************/
+
+        public JsonResult getAllFixedExpenseThisMonth()
+        {
+            return Json(fixedExpenseModel.GetExpenses(), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SaveFixedExpenseEntry(FixedExpenseModel fixedExpenseModel)
+        {
+            return Json(fixedExpenseModel.SaveExpense(fixedExpenseModel), JsonRequestBehavior.AllowGet);
         }
     }
 }

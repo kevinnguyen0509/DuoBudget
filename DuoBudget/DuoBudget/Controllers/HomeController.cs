@@ -23,7 +23,8 @@ namespace DuoBudget.Controllers
         //Static paths
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
         public static string IndexRoute = "~/Views/Home/Index/Index.cshtml";
-        public static string VariableExpenseTable = "~/Views/Home/Index/_VariableExpenseTable.cshtml";
+        public static string VariableExpenseTablePath = "~/Views/Home/Index/_VariableExpenseTable.cshtml";
+        public static string FixedExpenseTablePath = "~/Views/Home/Index/_FixedExpenseTable.cshtml";
 
         public ActionResult Index()
         {
@@ -64,7 +65,25 @@ namespace DuoBudget.Controllers
                 IncomeThisMonth = IncomeModelOptions.GetExpenses()
             };
 
-            return PartialView(VariableExpenseTable, indexViewModel);
+            return PartialView(VariableExpenseTablePath, indexViewModel);
+
+        }
+
+        /************************Fixed Expense**********************/
+        public ActionResult FixedTablePartialView()
+        {
+
+            IndexViewModel indexViewModel = new IndexViewModel
+            {
+                User = LoggedInuser.GetLoggedInUserCookie(),
+                VariableExpenseList = VariableExpenseOptions.GetExpenses(),
+                Categories = budgetTable.getAllCategories(),
+                FixedExpenses = FixedExpenseOptions.GetExpenses(),
+                SplitExpenses = SplitExpenseOptions.GetExpenses(),
+                IncomeThisMonth = IncomeModelOptions.GetExpenses()
+            };
+
+            return PartialView(FixedExpenseTablePath, indexViewModel);
 
         }
 
