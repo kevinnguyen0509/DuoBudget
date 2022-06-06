@@ -27,11 +27,21 @@ document.addEventListener('keyup', function (e) {
             let VariableModel = VariableExpenseOptions.CreateModel(UserId.value, Title.value, expenseDate.value,
                 expenseDescription.value, expenseCategories.value, expenseAmount.value, expenseSplitCheckBox.checked);
 
-            VariableExpenseOptions.AddExpense(VariableModel).then(function (ResultMessage) {
-                VariableExpenseOptions.GetAllExpenseThisMonth().then(function (VariableExpenseList) {
+            VariableExpenseOptions.AddExpense(VariableModel).then(function (ResultMessage) {//Adds new item to variable table
+                VariableExpenseOptions.GetAllExpenseThisMonth().then(function (VariableExpenseList) {//Gets new Exepense
+
+                    //Loads main budgetsheet table again
                     $('#VariableExpenseIndexBudgetContainer').load(baseUrl + 'home/VariableTablePartialView', function () {
                         VariableExpenseOptions.hideLoading();
+                        
                     });
+
+                    //Loads The Variable Model Table again
+                    $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
+                        
+                    });
+
+
                 });
             });
         }

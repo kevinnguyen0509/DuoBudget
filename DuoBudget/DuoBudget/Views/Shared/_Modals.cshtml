@@ -13,7 +13,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" >
                 @Html.Partial("~/Views/Home/Index/_IncomeTable.cshtml", Model)
             </div>
             <div class="modal-footer">
@@ -23,14 +23,14 @@
     </div>
 </div>
 
-<!-- Income Modal -->
+<!-- Variable Modal -->
 <div class="modal fade" id="VariableExpenseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header ">
                 <h3 class="modal-title" id="exampleModalLabel">Variable Expenses | Edit</h3>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="VariableModelBody">
                 @Html.Partial("~/Views/Home/Index/_VariableExpenseTable.cshtml", Model)
             </div>
             <div class="modal-footer">
