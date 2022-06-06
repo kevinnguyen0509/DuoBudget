@@ -208,6 +208,7 @@
     <Content Include="Views\Shared\_Modals.cshtml" />
     <Content Include="Views\Home\Index\_IncomeTable.cshtml" />
     <Content Include="Views\UtilComponents\_VariableLoading.cshtml" />
+    <Content Include="Views\UtilComponents\_FixedLoading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
