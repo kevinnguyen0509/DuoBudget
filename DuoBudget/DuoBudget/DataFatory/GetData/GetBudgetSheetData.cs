@@ -192,6 +192,7 @@ namespace DuoBudget.DataFatory.GetData
                             Category = SQLRec.GetString(SQLRec.GetOrdinal("Category")),
                             Amount = SQLRec.GetDecimal(SQLRec.GetOrdinal("Amount")),
                             Split = SQLRec.GetBoolean(SQLRec.GetOrdinal("split")),
+                            Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total"))
 
                         });
                     }

@@ -41,17 +41,21 @@
         <div id="VariableExpenseIndexBudgetContainer">@Html.Partial("~/Views/Home/Index/_VariableExpenseTable.cshtml", Model)</div>
     </div>
     <div class="col-xs-12 col-md-6 TableComponentContainer">
-        <h3 class="text-center TextColor BudgetSheeTitle" data-toggle="modal" data-target="#FixedExpenseModal">Fixed Expenses <i class="fa fa-edit fa-1x"></i></h3>
-        <div>@Html.Partial("~/Views/Home/Index/_FixedExpenseTable.cshtml", Model)</div>
-    </div>
+        <div style="display: flex; justify-content: center;">
+            @Html.Partial("~/Views/UtilComponents/_VariableLoading.cshtml")
+            <h3 class="text-center TextColor BudgetSheeTitle" data-toggle="modal" data-target="#FixedExpenseModal">Fixed Expenses <i class="fa fa-edit fa-1x"></i></h3>
+        </div>
 
-    <div class="col-xs-12 col-md-12 TableComponentContainer SplitContainer">
-        <h3 class="text-center TextColor BudgetSheeTitle" data-toggle="modal" data-target="#SplitExpenseModal">Split Expenses <i class="fa fa-edit fa-1x"></i></h3>
-        <div>@Html.Partial("~/Views/Home/Index/_SplitExpenseTable.cshtml", Model)</div>
-    </div>
+         <div>@Html.Partial("~/Views/Home/Index/_FixedExpenseTable.cshtml", Model)</div>
+        </div>
 
-</div> <!--End BUdgetsheet-->
+        <div class="col-xs-12 col-md-12 TableComponentContainer SplitContainer">
+            <h3 class="text-center TextColor BudgetSheeTitle" data-toggle="modal" data-target="#SplitExpenseModal">Split Expenses <i class="fa fa-edit fa-1x"></i></h3>
+            <div>@Html.Partial("~/Views/Home/Index/_SplitExpenseTable.cshtml", Model)</div>
+        </div>
+
+    </div> <!--End BUdgetsheet-->
 
 
 @Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
-<script type="module" src="~/Scripts/Index/BudgetSheet/Views/VariableExpense.js"></script>
+<script type="module" src="~/Scripts/Index/BudgetSheet/Views/BudgetSheet.js"></script>

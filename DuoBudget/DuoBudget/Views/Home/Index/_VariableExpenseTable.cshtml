@@ -55,14 +55,15 @@
             </tr>
         }
 
-        <tr>
-            <th scope="col" class="TableHeaderVariable">Total:</th>
-            <th scope="col" class="TableHeaderVariable"></th>
-            <th scope="col" class="TableHeaderVariable"></th>
-            <th scope="col" class="TableHeaderVariable"></th>
-            <th scope="col" class="TableHeaderVariable"></th>
-            <th scope="col" class="TableHeaderVariable">$@Model.VariableExpenseList[0].Total</th>
-        </tr>
+    <tr>
+        <th scope="col" class="TableHeaderVariable">Total:</th>
+        <th scope="col" class="TableHeaderVariable"></th>
+        <th scope="col" class="TableHeaderVariable"></th>
+        <th scope="col" class="TableHeaderVariable"></th>
+        <th scope="col" class="TableHeaderVariable"></th>
+        <th scope="col" class="TableHeaderVariable">$@(Model.VariableExpenseList.Count() == 0 ? Convert.ToDecimal("0.00") : Model.VariableExpenseList[0].Total)</th>
+        
+    </tr>
     </tbody>
 
 </table>

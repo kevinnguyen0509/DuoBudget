@@ -186,7 +186,7 @@
     <Content Include="Scripts\Default\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Default\modernizr-2.8.3.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\VariableExpenseModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Views\VariableExpense.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
