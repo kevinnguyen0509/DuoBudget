@@ -27,7 +27,7 @@ namespace DuoBudget.Controllers
 
         public ActionResult Index()
         {
-            
+            //Add test
             //Checks to see if the user is logged in.
             HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
             
