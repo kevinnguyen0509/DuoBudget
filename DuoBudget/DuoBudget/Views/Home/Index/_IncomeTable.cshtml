@@ -21,18 +21,26 @@
 
     </tr>
     <tbody id="incomeTableModal">
-  
-            @foreach (var incomeEntry in Model.IncomeThisMonth)
-            {
-                string[] date = incomeEntry.Date.ToString().Split(' ');
-                <tr>
-                    <th scope="row">@incomeEntry.Title</th>
-                    <td>@date[0]</td>
-                    <td>@incomeEntry.Description</td>
-                    <td>@incomeEntry.Amount</td>
-                    <td class="deleteRowButton" onclick="deleteIncome(@incomeEntry.ID, @incomeEntry.UserId)">X</td>
 
-                </tr>
-            }
+        @foreach (var incomeEntry in Model.IncomeThisMonth)
+        {
+            string[] date = incomeEntry.Date.ToString().Split(' ');
+            <tr>
+                <th scope="row">@incomeEntry.Title</th>
+                <td>@date[0]</td>
+                <td>@incomeEntry.Description</td>
+                <td>@incomeEntry.Amount</td>
+                <td class="deleteRowButton" onclick="deleteIncome(@incomeEntry.ID, @incomeEntry.UserId)">X</td>
+
+            </tr>
+        }
+        <tr style="background: #dce2f4; ">
+            <th scope="col">Total:</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">$@(Model.IncomeThisMonth.Count() == 0 ? Convert.ToDecimal("0.00") : Model.IncomeThisMonth[0].Total)</th>
+
+        </tr>
     </tbody>
 </table>

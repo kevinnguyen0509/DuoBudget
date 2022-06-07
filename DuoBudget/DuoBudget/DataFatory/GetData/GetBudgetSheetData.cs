@@ -49,7 +49,8 @@ namespace DuoBudget.DataFatory.GetData
                             Title = SQLRec.GetString(SQLRec.GetOrdinal("Title")),
                             Date = SQLRec.GetDateTime(SQLRec.GetOrdinal("IncomeDate")),
                             Description = SQLRec.GetString(SQLRec.GetOrdinal("Description")),
-                            Amount = SQLRec.GetDecimal(SQLRec.GetOrdinal("Amount"))
+                            Amount = SQLRec.GetDecimal(SQLRec.GetOrdinal("Amount")),
+                            Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total"))
                         });
                     }
                 }

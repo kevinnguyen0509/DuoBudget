@@ -39,27 +39,8 @@ document.addEventListener('keyup', function (e) {
         else if ((incomeTitle.value != '' && incomeTitle.value != null) && (incomeDateCheck.value != '')) {
 
             IncomeModelOptions.showLoading();
-
-            let userId = document.getElementById('UserLoggedIn');
-            let incomeTitle = document.getElementById('incomeTitle');
-            let incomeDate = document.getElementById('incomeDate');
-            let incomeDescription = document.getElementById('incomeDescription');
-            let incomeAmount = document.getElementById('incomeAmount');
-
-            let incomeModelEntry = IncomeModelOptions.CreateModel(userId.value, incomeTitle.value, incomeDate.value,
-                incomeDescription.value, incomeAmount.value);
-
-            IncomeModelOptions.AddExpense(incomeModelEntry).then(function (ResultMessage) {
-                if (ResultMessage.ReturnStatus.toUpperCase() == SuccessMessage.toUpperCase()) {
-                    $('#IncomeTableContainer').load(baseUrl + 'home/IncomeTablePartialView', function () {
-                        IncomeModelOptions.hideLoading();
-                        $('#incomeTitle').focus();
-                    });
-                }
-            })
-
-            
-
+            saveIncomeEntry(incomeTitle);
+        
         }
         else {
             VariableExpenseOptions.hideLoading();
@@ -137,4 +118,23 @@ function saveFixedEntry(FixedTitle) {
             alert(ResultMessage.ReturnMessage);
         }
     });
+}
+
+function saveIncomeEntry(incomeTitle) {
+    let userId = document.getElementById('UserLoggedIn');
+    let incomeDate = document.getElementById('incomeDate');
+    let incomeDescription = document.getElementById('incomeDescription');
+    let incomeAmount = document.getElementById('incomeAmount');
+
+    let incomeModelEntry = IncomeModelOptions.CreateModel(userId.value, incomeTitle.value, incomeDate.value,
+        incomeDescription.value, incomeAmount.value);
+
+    IncomeModelOptions.AddExpense(incomeModelEntry).then(function (ResultMessage) {
+        if (ResultMessage.ReturnStatus.toUpperCase() == SuccessMessage.toUpperCase()) {
+            $('#IncomeTableContainer').load(baseUrl + 'home/IncomeTablePartialView', function () {
+                IncomeModelOptions.hideLoading();
+                $('#incomeTitle').focus();
+            });
+        }
+    })
 }

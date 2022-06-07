@@ -43,6 +43,7 @@ namespace DuoBudget.DataFatory
                         Email = SQLRec.GetString(SQLRec.GetOrdinal("Email")),
                         Password = SQLRec.GetString(SQLRec.GetOrdinal("password")),
                         PartnerID = SQLRec.IsDBNull(SQLRec.GetOrdinal("PartnerID")) == true ? null : SQLRec.GetString(SQLRec.GetOrdinal("PartnerID"))
+                        
                     };
                 }
             }
