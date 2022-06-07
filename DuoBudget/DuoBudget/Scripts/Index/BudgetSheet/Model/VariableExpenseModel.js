@@ -1,6 +1,5 @@
 ﻿let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 
-
 export class VariableExpenseModel{
     constructor() {
 
@@ -44,10 +43,12 @@ export class VariableExpenseModel{
         }
         return Model;
     }
+
     showLoading() {
         let LoadingContainerVariable = document.getElementById('LoadingContainerVariable');
         LoadingContainerVariable.classList.remove('hide');
     }
+
     hideLoading() {
         let LoadingContainerVariable = document.getElementById('LoadingContainerVariable');
         setTimeout(() => { LoadingContainerVariable.classList.add('hide'); }, 750);

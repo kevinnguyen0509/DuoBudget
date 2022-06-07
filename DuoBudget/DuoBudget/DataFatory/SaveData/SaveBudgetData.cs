@@ -101,5 +101,47 @@ namespace DuoBudget.DataFatory
             }
             return ReturnValues;
         }
+
+        /************************Income*********************************/
+        public ResultMessage SaveIncomeEntry(IncomeModel incomeModel)
+        {
+
+            ResultMessage ReturnValues = new ResultMessage();
+            SqlConnection SQLConn = new SqlConnection();
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+            SqlCommand SQLComm = new SqlCommand("[dbo].[ssp_BudgetSheet_SaveIncomeEntry]", SQLConn);
+            SqlDataReader SQLRec;
+            SQLComm.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+
+                SQLComm.Parameters.AddWithValue("@UserId", incomeModel.UserId);
+                SQLComm.Parameters.AddWithValue("@Title", incomeModel.Title);
+                SQLComm.Parameters.AddWithValue("@IncomeDate", incomeModel.Date);
+                SQLComm.Parameters.AddWithValue("@Description", incomeModel.Description);
+                SQLComm.Parameters.AddWithValue("@Amount", incomeModel.Amount);
+
+                SQLRec = SQLComm.ExecuteReader();
+
+                while (SQLRec.Read())
+                {
+                    ReturnValues.ReturnMessage = SQLRec.GetString(SQLRec.GetOrdinal("ReturnMessage"));
+                    ReturnValues.ReturnStatus = SQLRec.GetString(SQLRec.GetOrdinal("ReturnStatus"));
+                    ReturnValues.newId = SQLRec.GetInt32(SQLRec.GetOrdinal("NewIdRow"));
+                }
+            }
+            catch (Exception e)
+            {
+                ReturnValues.ReturnMessage = "Oops, something went wrong! \n" + e.Message;
+                ReturnValues.ReturnStatus = "Failed";
+            }
+            finally
+            {
+                SQLConn.Close();
+            }
+            return ReturnValues;
+        }
     }
 }

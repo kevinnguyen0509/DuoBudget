@@ -186,6 +186,7 @@
     <Content Include="Scripts\Default\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Default\modernizr-2.8.3.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\FixedExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\IncomeModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\VariableExpenseModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
     <Content Include="Web.config" />
@@ -210,6 +211,7 @@
     <Content Include="Views\Home\Index\_IncomeTable.cshtml" />
     <Content Include="Views\UtilComponents\_VariableLoading.cshtml" />
     <Content Include="Views\UtilComponents\_FixedLoading.cshtml" />
+    <Content Include="Views\UtilComponents\_IncomeLoading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

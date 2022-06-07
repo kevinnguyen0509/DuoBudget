@@ -12,6 +12,7 @@ namespace DuoBudget.Controllers
     {
         VariableExpenseModel variableExpenseModel = new VariableExpenseModel();
         FixedExpenseModel fixedExpenseModel = new FixedExpenseModel();
+        IncomeModel IncomeModel = new IncomeModel();
         /****************************Variable*********************************/
 
         /// <summary>
@@ -38,6 +39,18 @@ namespace DuoBudget.Controllers
         public JsonResult SaveFixedExpenseEntry(FixedExpenseModel fixedExpenseModel)
         {
             return Json(fixedExpenseModel.SaveExpense(fixedExpenseModel), JsonRequestBehavior.AllowGet);
+        }
+
+        /****************************Income Expense*********************************/
+        public JsonResult SaveIncomeEntry(IncomeModel incomeModel)
+        {
+            
+            return Json(IncomeModel.SaveExpense(incomeModel), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllIncomeThisMonth()
+        {
+            return Json(IncomeModel.GetExpenses(), JsonRequestBehavior.AllowGet);
         }
     }
 }

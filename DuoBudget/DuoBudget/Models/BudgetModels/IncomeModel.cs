@@ -1,4 +1,5 @@
-﻿using DuoBudget.DataFatory.GetData;
+﻿using DuoBudget.DataFatory;
+using DuoBudget.DataFatory.GetData;
 using DuoBudget.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace DuoBudget.Models.BudgetModels
     public class IncomeModel : BudgetTable, IBudgetForm<IncomeModel>
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
+        SaveBudgetData SaveBudget = new SaveBudgetData();
 
         //This will get all the Incomes
         public List<IncomeModel> GetExpenses()
@@ -23,7 +25,8 @@ namespace DuoBudget.Models.BudgetModels
 
         public ResultMessage SaveExpense(IncomeModel expenseModel)
         {
-            throw new NotImplementedException();
+            ResultMessage returnMessage = SaveBudget.SaveIncomeEntry(expenseModel);
+            return returnMessage;
         }
     }
 }
