@@ -23,7 +23,7 @@
 }
 
 .modal-body{
-    overflow-x: hidden;
+    overflow-x: auto;
     max-height: 500px;
 }
 
