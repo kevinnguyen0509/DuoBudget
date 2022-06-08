@@ -12,7 +12,13 @@ namespace DuoBudget.Models.BudgetModels
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
         SaveBudgetData SaveBudgetData = new SaveBudgetData();
-        
+        DeleteBudgetsheetData DeleteData = new DeleteBudgetsheetData();
+
+        public ResultMessage DeleteEntry(int ID, int UserId)
+        {
+            return DeleteData.DeleteVaraibleExpenseEntry(ID, UserId);
+        }
+
         public List<VariableExpenseModel> GetExpenses()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
@@ -26,5 +32,7 @@ namespace DuoBudget.Models.BudgetModels
         {
             return SaveBudgetData.SaveVariableExpenseEntry(ExpenseModel);
         }
+
+       
     }
 }

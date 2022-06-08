@@ -41,6 +41,7 @@
     height: auto !important;
 }
 
-.BudgetSheeTitle{
+.BudgetSheeTitle, 
+.VariableExpenseDelete {
     cursor: pointer;
 }

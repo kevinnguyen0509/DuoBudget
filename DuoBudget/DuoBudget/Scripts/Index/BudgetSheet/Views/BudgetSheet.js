@@ -6,6 +6,8 @@ import { SummaryModel } from '../Model/SummaryModel.js'
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
+
+let UserLoggedInID = document.getElementById('UserLoggedIn').value * 1
 //Classes
 let VariableExpenseOptions = new VariableExpenseModel();
 let FixedExpenseOptions = new FixedExpenseModel();
@@ -66,6 +68,38 @@ document.addEventListener('keyup', function (e) {
     }
 })
 
+//Adding delete listener
+AddDeleteVariableListeners();
+
+function AddDeleteVariableListeners() {
+
+    let VariableExpenseDelete = document.querySelectorAll('.VariableExpenseDelete');
+
+    for (let i = 0; i < VariableExpenseDelete.length; i++) {
+        VariableExpenseDelete[i].addEventListener('click', function () {
+            let EntryID = VariableExpenseDelete[i].getAttribute('variabledeleteid') * 1;
+            VariableExpenseOptions.showLoading();
+            VariableExpenseOptions.DeleteVaraibleExpenseEntry(EntryID, UserLoggedInID).then(function (ResultMessage) {
+                //Load Main budgetsheet
+                $('#VariableExpenseIndexBudgetContainer').load(baseUrl + 'home/VariableTablePartialView', function () {
+                   
+                    $('#expenseitle').focus();
+                    SplitExpenseOptions.ReloadSplitExpenseTable();
+
+                    //Loads Modal Variable table
+                    $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
+                        VariableExpenseOptions.hideLoading();
+                        AddDeleteVariableListeners();
+                    });
+
+                });
+            });
+        });
+    }
+}
+
+
+
 function saveVariableEntry(Title) {
 
     let UserId = document.getElementById('UserLoggedIn');
@@ -86,15 +120,17 @@ function saveVariableEntry(Title) {
 
                 //Loads main budgetsheet table again
                 $('#VariableExpenseIndexBudgetContainer').load(baseUrl + 'home/VariableTablePartialView', function () {
-                    VariableExpenseOptions.hideLoading();
+                    
                     $('#expenseitle').focus();
                     SplitExpenseOptions.ReloadSplitExpenseTable();
+                    //Loads The Variable Model Table again
+                    $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
+                        VariableExpenseOptions.hideLoading();
+                        AddDeleteVariableListeners();
+                    });
                 });
 
-                //Loads The Variable Model Table again
-                $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
 
-                });
             });
         }
         else {

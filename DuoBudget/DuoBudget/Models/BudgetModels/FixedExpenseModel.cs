@@ -12,6 +12,12 @@ namespace DuoBudget.Models.BudgetModels
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
         SaveBudgetData SaveBudgetData = new SaveBudgetData();
+
+        public ResultMessage DeleteEntry(int ID, int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FixedExpenseModel> GetExpenses()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];

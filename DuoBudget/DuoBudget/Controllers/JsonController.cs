@@ -1,4 +1,5 @@
 ﻿using DuoBudget.DataFatory;
+using DuoBudget.Models;
 using DuoBudget.Models.BudgetModels;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace DuoBudget.Controllers
         FixedExpenseModel fixedExpenseModel = new FixedExpenseModel();
         IncomeModel IncomeModel = new IncomeModel();
         SplitExpenseModel SplitExpenseModel = new SplitExpenseModel();
+        DeleteBudgetsheetData DeleteBudgetsheetData = new DeleteBudgetsheetData();
         /****************************Variable*********************************/
 
         /// <summary>
@@ -31,6 +33,11 @@ namespace DuoBudget.Controllers
             return Json(variableExpenseModel.GetExpenses(), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult DeleteVaraibleExpenseEntry(int id, int UserID)
+        {
+            ResultMessage resultMessage = variableExpenseModel.DeleteEntry(id, UserID);
+            return Json(resultMessage, JsonRequestBehavior.AllowGet);
+        }
         /****************************Fixed Expense*********************************/
 
         public JsonResult getAllFixedExpenseThisMonth()

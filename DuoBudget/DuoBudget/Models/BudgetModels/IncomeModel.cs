@@ -13,6 +13,11 @@ namespace DuoBudget.Models.BudgetModels
         GetBudgetSheetData GetData = new GetBudgetSheetData();
         SaveBudgetData SaveBudget = new SaveBudgetData();
 
+        public ResultMessage DeleteEntry(int ID, int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
         //This will get all the Incomes
         public List<IncomeModel> GetExpenses()
         {

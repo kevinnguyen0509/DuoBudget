@@ -46,11 +46,11 @@
                 <td>$@VariableExpense.Amount</td>
                 @if (VariableExpense.Split)
                 {
-                    <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
+                    <td class="text-center VariableExpenseDelete" variabledeleteid="@VariableExpense.ID"><i class="fa fa-check text-center" style="color: green"></i></td>
                 }
                 else
                 {
-                    <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
+                    <td class="text-center VariableExpenseDelete" variabledeleteid="@VariableExpense.ID"><i class="fa fa-ban text-center" style="color: red;"></i></td>
                 }
             </tr>
         }

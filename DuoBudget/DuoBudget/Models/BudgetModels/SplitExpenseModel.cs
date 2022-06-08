@@ -10,6 +10,12 @@ namespace DuoBudget.Models.BudgetModels
     public class SplitExpenseModel : BudgetTable, IBudgetForm<SplitExpenseModel>
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
+
+        public ResultMessage DeleteEntry(int ID, int UserId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<SplitExpenseModel> GetExpenses()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];

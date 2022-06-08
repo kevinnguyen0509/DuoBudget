@@ -34,6 +34,22 @@ export class VariableExpenseModel{
         return saveResult;
     }
 
+    async DeleteVaraibleExpenseEntry(ID, UserId) {
+        const saveResult =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'Json/DeleteVaraibleExpenseEntry',
+                data: {
+                    ID,
+                    UserId
+                },
+                success: function (ResultMesssage) {
+                    return ResultMesssage;
+                }
+            });
+        return saveResult;
+    }
+
     CreateModel(UserId, Title, Date, Description, Category, Amount, Split) {
         const Model = {
             UserId: UserId,

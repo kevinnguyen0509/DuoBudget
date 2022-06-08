@@ -11,6 +11,6 @@ namespace DuoBudget.Models.Interfaces
     {
          List<T> GetExpenses();
         ResultMessage SaveExpense(T ExpenseModel);
-
+        ResultMessage DeleteEntry(int ID, int UserId);
     }
 }
