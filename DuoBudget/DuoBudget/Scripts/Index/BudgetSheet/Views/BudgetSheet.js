@@ -1,6 +1,7 @@
 ﻿import { VariableExpenseModel } from '../Model/VariableExpenseModel.js'
 import { FixedExpenseModel } from '../Model/FixedExpenseModel.js'
 import { IncomeModel } from '../Model/IncomeModel.js'
+import { SplitExpenseModel } from '../Model/SplitExpenseModel.js'
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
@@ -8,6 +9,7 @@ let SuccessMessage = 'Success';
 let VariableExpenseOptions = new VariableExpenseModel();
 let FixedExpenseOptions = new FixedExpenseModel();
 let IncomeModelOptions = new IncomeModel();
+let SplitExpenseOptions = new SplitExpenseModel();
 /*
  * This will listener for the enter key to be pressed 
  */
@@ -71,6 +73,7 @@ function saveVariableEntry(Title) {
                 $('#VariableExpenseIndexBudgetContainer').load(baseUrl + 'home/VariableTablePartialView', function () {
                     VariableExpenseOptions.hideLoading();
                     $('#expenseitle').focus();
+                    SplitExpenseOptions.ReloadSplitExpenseTable();
                 });
 
                 //Loads The Variable Model Table again
@@ -96,16 +99,15 @@ function saveFixedEntry(FixedTitle) {
     let fixedAmount = document.getElementById('fixedAmount');
     let fixedExpenseClickCbo = document.getElementById('fixedExpenseClickCbo');
 
-
-
     let fixedExpenseModel = FixedExpenseOptions.CreateModel(UserId.value, FixedTitle.value, fixedDate.value, fixedDescription.value,
         fixedCategories.value, fixedAmount.value, fixedExpenseClickCbo.checked);
 
     FixedExpenseOptions.AddExpense(fixedExpenseModel).then(function (ResultMessage) {
         if (ResultMessage.ReturnStatus.toUpperCase() == SuccessMessage.toUpperCase()) {
             $('#FixedExpenseIndexBudgetContainer').load(baseUrl + 'home/FixedTablePartialView', function () {
-                FixedExpenseOptions.hideLoading();
+                FixedExpenseOptions.hideLoading();          
                 $('#fixedTitle').focus();
+                SplitExpenseOptions.ReloadSplitExpenseTable();
             });
 
             $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {

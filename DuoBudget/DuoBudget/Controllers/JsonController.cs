@@ -13,6 +13,7 @@ namespace DuoBudget.Controllers
         VariableExpenseModel variableExpenseModel = new VariableExpenseModel();
         FixedExpenseModel fixedExpenseModel = new FixedExpenseModel();
         IncomeModel IncomeModel = new IncomeModel();
+        SplitExpenseModel SplitExpenseModel = new SplitExpenseModel();
         /****************************Variable*********************************/
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace DuoBudget.Controllers
         public JsonResult GetAllIncomeThisMonth()
         {
             return Json(IncomeModel.GetExpenses(), JsonRequestBehavior.AllowGet);
+        }
+
+        /****************************Split Expense*********************************/
+        public JsonResult GetAllSplitExpenseThisMonth()
+        {
+            return Json(SplitExpenseModel.GetExpenses(), JsonRequestBehavior.AllowGet);
         }
     }
 }
