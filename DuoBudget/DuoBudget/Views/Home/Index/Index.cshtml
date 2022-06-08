@@ -9,8 +9,12 @@
 <div class="row jumbotron">
     <div class="col-xs-12 col-md-6" id="MonthlySumaryContainer">
         <h2>Monthly Summary:</h2>
-        <h3 class="TextColor">June: $8450</h3>
-        <h4 class="TextColor">10000 - 2000 + 450</h4>
+        <h3 class="TextColor"><span id="CurrentMonth">June</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
+        <h4 class="TextColor">
+            $<span id="incomeSummaryMonthLbl">0.00</span> - 
+            $<span id="ExpenseSummaryMonthLbl">0.00</span> + 
+            $<span id="SplitSummaryMonthlyLbl">0.00</span>
+        </h4>
         <button class="btn btn-primary btn-lg ButtonComponent" data-toggle="modal" data-target="#IncomeModal">View/Edit</button>
     </div>
 

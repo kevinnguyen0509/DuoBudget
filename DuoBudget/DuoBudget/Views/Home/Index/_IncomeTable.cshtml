@@ -39,7 +39,7 @@
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col">$@(Model.IncomeThisMonth.Count() == 0 ? Convert.ToDecimal("0.00") : Model.IncomeThisMonth[0].Total)</th>
+            <th scope="col">$<span id="IncomeExpenseTotalLabel">@(Model.IncomeThisMonth.Count() == 0 ? Convert.ToDecimal("0.00") : Model.IncomeThisMonth[0].Total)</span></th>
 
         </tr>
     </tbody>

@@ -1,4 +1,7 @@
-﻿let baseUrl = document.getElementById('HiddenCurrentUrl').value;
+﻿import { SummaryModel } from '../Model/SummaryModel.js'
+let baseUrl = document.getElementById('HiddenCurrentUrl').value;
+
+let SummaryModelOption = new SummaryModel();
 
 export class SplitExpenseModel {
     constructor() {
@@ -21,7 +24,7 @@ export class SplitExpenseModel {
 
     ReloadSplitExpenseTable() {
         $('#SplitExpenseTableContainer').load(baseUrl + 'home/SplitTablePartialView', function () {
-            
+            SummaryModelOption.ReloadMonthlySummaryLabels();
         });
     }
 }

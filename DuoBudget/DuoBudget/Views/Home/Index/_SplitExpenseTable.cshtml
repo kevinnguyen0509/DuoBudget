@@ -35,7 +35,7 @@
             <th scope="col" class="TableHeaderSplit"></th>
             <th scope="col" class="TableHeaderSplit"></th>
             <th scope="col" class="TableHeaderSplit"></th>
-            <th scope="col" class="TableHeaderSplit">$@(Model.SplitExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.SplitExpenses[0].Total)</th>
+            <th scope="col" class="TableHeaderSplit" >$<span id="SplitExpenseTotalLabel">@(Model.SplitExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.SplitExpenses[0].Total)</span></th>
 
         </tr>
 

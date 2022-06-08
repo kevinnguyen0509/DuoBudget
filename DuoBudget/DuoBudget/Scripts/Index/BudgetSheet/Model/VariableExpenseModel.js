@@ -1,4 +1,7 @@
-﻿let baseUrl = document.getElementById('HiddenCurrentUrl').value;
+﻿
+
+let baseUrl = document.getElementById('HiddenCurrentUrl').value;
+
 
 export class VariableExpenseModel{
     constructor() {

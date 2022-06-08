@@ -188,6 +188,7 @@
     <Content Include="Scripts\Index\BudgetSheet\Model\FixedExpenseModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\IncomeModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\SplitExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\SummaryModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\VariableExpenseModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
     <Content Include="Web.config" />

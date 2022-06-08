@@ -67,7 +67,7 @@
             <th scope="col" class="TableHeaderFixed"></th>
             <th scope="col" class="TableHeaderFixed"></th>
             <th scope="col" class="TableHeaderFixed"></th>
-            <th scope="col" class="TableHeaderFixed">$@(Model.FixedExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.FixedExpenses[0].Total)</th>
+            <th scope="col" class="TableHeaderFixed" >$<Span id="FixedExpenseTotalLabel">@(Model.FixedExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.FixedExpenses[0].Total)</Span></th>
         </tr>
     </tbody>
 </table>

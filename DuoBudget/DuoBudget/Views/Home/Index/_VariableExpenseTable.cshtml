@@ -61,7 +61,7 @@
         <th scope="col" class="TableHeaderVariable"></th>
         <th scope="col" class="TableHeaderVariable"></th>
         <th scope="col" class="TableHeaderVariable"></th>
-        <th scope="col" class="TableHeaderVariable">$@(Model.VariableExpenseList.Count() == 0 ? Convert.ToDecimal("0.00") : Model.VariableExpenseList[0].Total)</th>
+        <th scope="col" class="TableHeaderVariable" >$<span id="VariableExpenseTotal">@(Model.VariableExpenseList.Count() == 0 ? Convert.ToDecimal("0.00") : Model.VariableExpenseList[0].Total)</span></th>
         
     </tr>
     </tbody>

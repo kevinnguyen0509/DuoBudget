@@ -2,6 +2,7 @@
 import { FixedExpenseModel } from '../Model/FixedExpenseModel.js'
 import { IncomeModel } from '../Model/IncomeModel.js'
 import { SplitExpenseModel } from '../Model/SplitExpenseModel.js'
+import { SummaryModel } from '../Model/SummaryModel.js'
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
@@ -10,9 +11,23 @@ let VariableExpenseOptions = new VariableExpenseModel();
 let FixedExpenseOptions = new FixedExpenseModel();
 let IncomeModelOptions = new IncomeModel();
 let SplitExpenseOptions = new SplitExpenseModel();
+let SummaryModelOptions = new SummaryModel();
 /*
  * This will listener for the enter key to be pressed 
  */
+
+$(document).ready(function () {
+
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    const d = new Date();
+    let name = month[d.getMonth()];
+    document.getElementById('CurrentMonth').innerHTML = name;
+
+    //This also loads the Sumary Monthly totals
+    SplitExpenseOptions.ReloadSplitExpenseTable();
+});
+
 document.addEventListener('keyup', function (e) {
     if (e.keyCode == 13) {
 
@@ -136,6 +151,7 @@ function saveIncomeEntry(incomeTitle) {
             $('#IncomeTableContainer').load(baseUrl + 'home/IncomeTablePartialView', function () {
                 IncomeModelOptions.hideLoading();
                 $('#incomeTitle').focus();
+                SplitExpenseOptions.ReloadSplitExpenseTable();
             });
         }
     })
