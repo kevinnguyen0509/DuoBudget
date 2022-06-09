@@ -31,6 +31,22 @@ export class IncomeModel {
         return saveResult;
     }
 
+    async DeleteIncomeExpenseEntry(ID, UserId) {
+        const DeleteResult =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'Json/DeleteIncomeExpenseEntry',
+                data: {
+                    ID,
+                    UserId
+                },
+                success: function (ResultMessage) {
+                    return ResultMessage;
+                }
+            });
+        return DeleteResult;
+    }
+
     CreateModel(UserId, Title, Date, Description, Amount) {
         const Model = {
             UserId: UserId,

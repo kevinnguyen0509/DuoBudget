@@ -12,10 +12,10 @@ namespace DuoBudget.Models.BudgetModels
     {
         GetBudgetSheetData GetData = new GetBudgetSheetData();
         SaveBudgetData SaveBudgetData = new SaveBudgetData();
-
+        DeleteBudgetsheetData DeleteBudgetsheetData = new DeleteBudgetsheetData();
         public ResultMessage DeleteEntry(int ID, int UserId)
         {
-            throw new NotImplementedException();
+            return DeleteBudgetsheetData.DeleteFixedExpenseEntry(ID, UserId);
         }
 
         public List<FixedExpenseModel> GetExpenses()

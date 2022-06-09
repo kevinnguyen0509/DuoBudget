@@ -30,7 +30,7 @@
                 <td>@date[0]</td>
                 <td>@incomeEntry.Description</td>
                 <td>@incomeEntry.Amount</td>
-                <td class="deleteRowButton" onclick="deleteIncome(@incomeEntry.ID, @incomeEntry.UserId)">X</td>
+                <td class="deleteRowButton IncomeExpenseDelete" Incomedeleteid="@incomeEntry.ID" onclick="deleteIncome(@incomeEntry.ID, @incomeEntry.UserId)"><i class="fa fa-times-circle text-center" style="color: red;"></i></td>
 
             </tr>
         }

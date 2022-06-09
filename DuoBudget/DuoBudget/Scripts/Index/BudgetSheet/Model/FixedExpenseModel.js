@@ -33,6 +33,22 @@ export class FixedExpenseModel {
         return saveResult;
     }
 
+    async DeleteFixedExpenseEntry(ID, UserId) {
+        const DeleteResult =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'Json/DeleteFixedExpenseEntry',
+                data: {
+                    ID,
+                    UserId
+                },
+                success: function (ResultMessage) {
+                    return ResultMessage;
+                }
+            });
+        return DeleteResult;
+    }
+
     CreateModel(UserId, Title, Date, Description, Category, Amount, Split) {
         const Model = {
             UserId: UserId,

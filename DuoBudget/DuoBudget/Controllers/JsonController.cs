@@ -48,6 +48,10 @@ namespace DuoBudget.Controllers
         {
             return Json(fixedExpenseModel.SaveExpense(fixedExpenseModel), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult DeleteFixedExpenseEntry(int ID, int UserId)
+        {
+            return Json(fixedExpenseModel.DeleteEntry(ID, UserId), JsonRequestBehavior.AllowGet);
+        }
 
         /****************************Income Expense*********************************/
         public JsonResult SaveIncomeEntry(IncomeModel incomeModel)
@@ -59,6 +63,11 @@ namespace DuoBudget.Controllers
         public JsonResult GetAllIncomeThisMonth()
         {
             return Json(IncomeModel.GetExpenses(), JsonRequestBehavior.AllowGet);
+        }        
+        public JsonResult DeleteIncomeExpenseEntry(int ID, int UserId)
+        {
+            ResultMessage resultMessage = IncomeModel.DeleteEntry(ID, UserId);
+            return Json(resultMessage, JsonRequestBehavior.AllowGet);
         }
 
         /****************************Split Expense*********************************/

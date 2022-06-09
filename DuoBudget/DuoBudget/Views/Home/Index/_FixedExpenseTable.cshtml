@@ -50,12 +50,12 @@
                 <td>$@FixedExpense.Amount</td>
                 @if (FixedExpense.Split)
                 {
-                    <td class="text-center"><i class="fa fa-check text-center" style="color: green"></i></td>
+                    <td class="text-center FixedExpenseDelete" variabledeleteid="@FixedExpense.ID"><i class="fa fa-check text-center" style="color: green"></i></td>
 
                 }
                 else
                 {
-                    <td class="text-center"><i class="fa fa-ban text-center" style="color: red;"></i></td>
+                    <td class="text-center FixedExpenseDelete" variabledeleteid="@FixedExpense.ID"><i class="fa fa-ban text-center" style="color: red;"></i></td>
 
                 }
             </tr>
@@ -67,7 +67,7 @@
             <th scope="col" class="TableHeaderFixed"></th>
             <th scope="col" class="TableHeaderFixed"></th>
             <th scope="col" class="TableHeaderFixed"></th>
-            <th scope="col" class="TableHeaderFixed" >$<Span id="FixedExpenseTotalLabel">@(Model.FixedExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.FixedExpenses[0].Total)</Span></th>
+            <th scope="col" class="TableHeaderFixed">$<Span id="FixedExpenseTotalLabel">@(Model.FixedExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.FixedExpenses[0].Total)</Span></th>
         </tr>
     </tbody>
 </table>

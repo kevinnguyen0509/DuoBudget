@@ -28,6 +28,11 @@ $(document).ready(function () {
 
     //This also loads the Sumary Monthly totals
     SplitExpenseOptions.ReloadSplitExpenseTable();
+
+    //Adding delete listener
+    AddDeleteVariableListeners();
+    AddDeleteFixedListeners();
+    AddDeleteIncomeListener();
 });
 
 document.addEventListener('keyup', function (e) {
@@ -68,8 +73,46 @@ document.addEventListener('keyup', function (e) {
     }
 })
 
-//Adding delete listener
-AddDeleteVariableListeners();
+
+function AddDeleteIncomeListener() {
+    let IncomeExpenseDelete = document.querySelectorAll('.IncomeExpenseDelete');
+    for (let i = 0; i < IncomeExpenseDelete.length; i++) {
+        IncomeExpenseDelete[i].addEventListener('click', function () {
+            IncomeModelOptions.showLoading();
+            let RowToDeleteID = IncomeExpenseDelete[i].getAttribute('Incomedeleteid') * 1;
+            IncomeModelOptions.DeleteIncomeExpenseEntry(RowToDeleteID, UserLoggedInID).then(function (ResultMessage) {
+                $('#IncomeTableContainer').load(baseUrl + 'home/IncomeTablePartialView', function () {
+                    IncomeModelOptions.hideLoading();
+                    $('#incomeTitle').focus();
+                    SplitExpenseOptions.ReloadSplitExpenseTable();
+                    AddDeleteIncomeListener();
+                });
+            });
+        });
+    }
+}
+
+function AddDeleteFixedListeners() {
+    let FixedExpenseDelete = document.querySelectorAll('.FixedExpenseDelete');
+    for (let i = 0; i < FixedExpenseDelete.length; i++) {
+        FixedExpenseDelete[i].addEventListener('click', function () {
+            FixedExpenseOptions.showLoading();
+            let FixedEntryID = FixedExpenseDelete[i].getAttribute('variabledeleteid') * 1;
+            FixedExpenseOptions.DeleteFixedExpenseEntry(FixedEntryID, UserLoggedInID).then(function (ResultMessage) {
+                $('#FixedExpenseIndexBudgetContainer').load(baseUrl + 'home/FixedTablePartialView', function () {
+                    
+                    $('#fixedTitle').focus();
+                    SplitExpenseOptions.ReloadSplitExpenseTable();
+                    $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
+                        FixedExpenseOptions.hideLoading();
+                        AddDeleteFixedListeners();
+                    });
+                });
+            });
+        });
+
+    }
+}
 
 function AddDeleteVariableListeners() {
 
@@ -97,8 +140,6 @@ function AddDeleteVariableListeners() {
         });
     }
 }
-
-
 
 function saveVariableEntry(Title) {
 
@@ -159,11 +200,12 @@ function saveFixedEntry(FixedTitle) {
                 FixedExpenseOptions.hideLoading();          
                 $('#fixedTitle').focus();
                 SplitExpenseOptions.ReloadSplitExpenseTable();
+                $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
+                    AddDeleteFixedListeners()
+                });
             });
 
-            $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
 
-            });
         }
 
         else {
@@ -188,6 +230,7 @@ function saveIncomeEntry(incomeTitle) {
                 IncomeModelOptions.hideLoading();
                 $('#incomeTitle').focus();
                 SplitExpenseOptions.ReloadSplitExpenseTable();
+                AddDeleteIncomeListener();
             });
         }
     })
