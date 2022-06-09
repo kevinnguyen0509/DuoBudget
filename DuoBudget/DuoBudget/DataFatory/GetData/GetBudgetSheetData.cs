@@ -12,6 +12,56 @@ namespace DuoBudget.DataFatory.GetData
 {
     public class GetBudgetSheetData
     {
+        /************************Yearly Totals*********************************/
+        public YearlyTotalsModel getAllYearlyTotals(int UserID, int year)
+        {
+
+            YearlyTotalsModel YearlyTotalsModel = new YearlyTotalsModel();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetAllYearlySummaryFromCurrentYear]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLComm.Parameters.AddWithValue("@CurrentYear", year);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                if (SQLRec.Read())
+                {
+                    YearlyTotalsModel.YearlyTotal  = SQLRec.GetDecimal(SQLRec.GetOrdinal("YearlyTotal"));
+                    YearlyTotalsModel.YearlyIncome = SQLRec.GetDecimal(SQLRec.GetOrdinal("YearlyIncome"));
+                    YearlyTotalsModel.YearlyVariable = SQLRec.GetDecimal(SQLRec.GetOrdinal("YearlyVariable"));
+                    YearlyTotalsModel.YearlyFixed = SQLRec.GetDecimal(SQLRec.GetOrdinal("YearlyFixed"));
+                    YearlyTotalsModel.YearlySplit = SQLRec.GetDecimal(SQLRec.GetOrdinal("YearlySplit"));
+                }
+            }
+            catch (Exception e)
+            {
+
+                YearlyTotalsModel.ReturnMessage = e.Message;
+                YearlyTotalsModel.ReturnStatus = "Failed";
+                YearlyTotalsModel.newId = -1;
+
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return YearlyTotalsModel;
+        }
+
 
         /************************Income*********************************/
         public List<IncomeModel> getAllIncomeListThisMonth(int month, int year, int userId)

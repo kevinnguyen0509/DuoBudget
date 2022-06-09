@@ -3,6 +3,7 @@ import { FixedExpenseModel } from '../Model/FixedExpenseModel.js'
 import { IncomeModel } from '../Model/IncomeModel.js'
 import { SplitExpenseModel } from '../Model/SplitExpenseModel.js'
 import { SummaryModel } from '../Model/SummaryModel.js'
+import { YearlyTotalModel } from '../Model/YearlyTotalModel.js'
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
@@ -14,6 +15,7 @@ let FixedExpenseOptions = new FixedExpenseModel();
 let IncomeModelOptions = new IncomeModel();
 let SplitExpenseOptions = new SplitExpenseModel();
 let SummaryModelOptions = new SummaryModel();
+let YearlyTotalOptions = new YearlyTotalModel();
 /*
  * This will listener for the enter key to be pressed 
  */
@@ -28,7 +30,7 @@ $(document).ready(function () {
 
     //This also loads the Sumary Monthly totals
     SplitExpenseOptions.ReloadSplitExpenseTable();
-
+    YearlyTotalOptions.ReloadYearlySummaryTotal();
     //Adding delete listener
     AddDeleteVariableListeners();
     AddDeleteFixedListeners();
@@ -74,6 +76,8 @@ document.addEventListener('keyup', function (e) {
 })
 
 
+
+
 function AddDeleteIncomeListener() {
     let IncomeExpenseDelete = document.querySelectorAll('.IncomeExpenseDelete');
     for (let i = 0; i < IncomeExpenseDelete.length; i++) {
@@ -86,6 +90,7 @@ function AddDeleteIncomeListener() {
                     $('#incomeTitle').focus();
                     SplitExpenseOptions.ReloadSplitExpenseTable();
                     AddDeleteIncomeListener();
+                    YearlyTotalOptions.ReloadYearlySummaryTotal();
                 });
             });
         });
@@ -106,6 +111,7 @@ function AddDeleteFixedListeners() {
                     $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
                         FixedExpenseOptions.hideLoading();
                         AddDeleteFixedListeners();
+                        YearlyTotalOptions.ReloadYearlySummaryTotal();
                     });
                 });
             });
@@ -133,6 +139,7 @@ function AddDeleteVariableListeners() {
                     $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
                         VariableExpenseOptions.hideLoading();
                         AddDeleteVariableListeners();
+                        YearlyTotalOptions.ReloadYearlySummaryTotal();
                     });
 
                 });
@@ -168,6 +175,7 @@ function saveVariableEntry(Title) {
                     $('#VariableModelBody').load(baseUrl + 'home/VariableTablePartialView', function () {
                         VariableExpenseOptions.hideLoading();
                         AddDeleteVariableListeners();
+                        YearlyTotalOptions.ReloadYearlySummaryTotal();
                     });
                 });
 
@@ -202,6 +210,7 @@ function saveFixedEntry(FixedTitle) {
                 SplitExpenseOptions.ReloadSplitExpenseTable();
                 $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
                     AddDeleteFixedListeners()
+                    YearlyTotalOptions.ReloadYearlySummaryTotal();
                 });
             });
 
@@ -231,6 +240,7 @@ function saveIncomeEntry(incomeTitle) {
                 $('#incomeTitle').focus();
                 SplitExpenseOptions.ReloadSplitExpenseTable();
                 AddDeleteIncomeListener();
+                YearlyTotalOptions.ReloadYearlySummaryTotal();
             });
         }
     })

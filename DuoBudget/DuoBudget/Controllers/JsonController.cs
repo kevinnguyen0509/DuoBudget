@@ -16,6 +16,7 @@ namespace DuoBudget.Controllers
         IncomeModel IncomeModel = new IncomeModel();
         SplitExpenseModel SplitExpenseModel = new SplitExpenseModel();
         DeleteBudgetsheetData DeleteBudgetsheetData = new DeleteBudgetsheetData();
+        YearlyTotalsModel YearlyTotalsModel = new YearlyTotalsModel();
         /****************************Variable*********************************/
 
         /// <summary>
@@ -74,6 +75,12 @@ namespace DuoBudget.Controllers
         public JsonResult GetAllSplitExpenseThisMonth()
         {
             return Json(SplitExpenseModel.GetExpenses(), JsonRequestBehavior.AllowGet);
+        }
+
+        /****************************Yearly Totals*********************************/
+        public JsonResult GetYearlySummaryTotals()
+        {
+            return Json(YearlyTotalsModel.GetYearlySummaryTotals(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -136,6 +136,7 @@
     <Compile Include="Models\BudgetModels\SplitExpenseModel.cs" />
     <Compile Include="Models\BudgetModels\TotalsModel.cs" />
     <Compile Include="Models\BudgetModels\VariableExpenseModel.cs" />
+    <Compile Include="Models\BudgetModels\YearlyTotalsModel.cs" />
     <Compile Include="Models\Components\DropDownOptions.cs" />
     <Compile Include="Models\Parents\BudgetTable.cs" />
     <Compile Include="Models\Interfaces\IBudgetForm.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Scripts\Index\BudgetSheet\Model\SplitExpenseModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\SummaryModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\VariableExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\YearlyTotalModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
