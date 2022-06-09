@@ -29,7 +29,8 @@ export class YearlyTotalModel {
             document.getElementById('YearlyTotal').innerHTML = YearlyTotal;
             document.getElementById('YearlySummaryCurrentYear').innerHTML = currentYear;
             document.getElementById('YearlySummaryIncome').innerHTML = YearlyIncome;
-            document.getElementById('YearlySummaryTotalExpenses').innerHTML = (YearlyVariable + YearlyFixed);
+            document.getElementById('YearlySummaryTotalVariable').innerHTML = YearlyVariable;
+            document.getElementById('YearlySummaryTotalFixed').innerHTML = YearlyFixed;
             document.getElementById('YearlySummarySplit').innerHTML = YearlySplit;
         });
     }
