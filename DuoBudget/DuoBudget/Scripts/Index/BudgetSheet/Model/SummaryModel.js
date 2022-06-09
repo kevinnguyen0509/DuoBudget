@@ -19,7 +19,7 @@ export class SummaryModel {
 
 
         incomeSummaryMonthLbl.innerHTML = IncomeExpenseTotalLabel.innerHTML;
-        ExpenseSummaryMonthLbl.innerHTML = (FixedExpenseTotalLabel.innerHTML * 1) + (VariableExpenseTotal.innerHTML * 1);
+        ExpenseSummaryMonthLbl.innerHTML = ((FixedExpenseTotalLabel.innerHTML * 1) + (VariableExpenseTotal.innerHTML * 1)).toFixed(2);
         SplitSummaryMonthlyLbl.innerHTML = SplitExpenseTotalLabel.innerHTML;
         TotalSumaryMonthlyLbl.innerHTML = ((incomeSummaryMonthLbl.innerHTML * 1) - (ExpenseSummaryMonthLbl.innerHTML * 1) + (SplitExpenseTotalLabel.innerHTML * 1)).toFixed(2);
         
