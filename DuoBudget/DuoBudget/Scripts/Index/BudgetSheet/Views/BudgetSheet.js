@@ -9,6 +9,7 @@ let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
 
 let UserLoggedInID = document.getElementById('UserLoggedIn').value * 1
+let TransferFixedExpenseBtn = document.getElementById('TransferFixedExpenseBtn');
 //Classes
 let VariableExpenseOptions = new VariableExpenseModel();
 let FixedExpenseOptions = new FixedExpenseModel();
@@ -74,6 +75,29 @@ document.addEventListener('keyup', function (e) {
         }
     }
 })
+
+TransferFixedExpenseBtn.addEventListener('click', function () {
+    FixedExpenseOptions.showLoading();
+    FixedExpenseOptions.CopyFixedExpenseEntry().then(function (ResultMessage) {
+
+        if (ResultMessage.ReturnStatus.toUpperCase() == SuccessMessage.toUpperCase()) {
+            $('#FixedExpenseIndexBudgetContainer').load(baseUrl + 'home/FixedTablePartialView', function () {
+                FixedExpenseOptions.hideLoading();
+                $('#fixedTitle').focus();
+                SplitExpenseOptions.ReloadSplitExpenseTable();
+                $('#FixedModelBody').load(baseUrl + 'home/FixedTablePartialView', function () {
+                    AddDeleteFixedListeners()
+                    YearlyTotalOptions.ReloadYearlySummaryTotal();
+                });
+            });
+        }
+        else {
+            FixedExpenseOptions.hideLoading();
+            alert('We were not able to transfer the fixed expenses')
+        }
+
+    });
+});
 
 
 

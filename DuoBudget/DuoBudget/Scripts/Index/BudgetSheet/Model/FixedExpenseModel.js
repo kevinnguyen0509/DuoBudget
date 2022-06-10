@@ -49,6 +49,19 @@ export class FixedExpenseModel {
         return DeleteResult;
     }
 
+    async CopyFixedExpenseEntry() {
+        const CopyResult =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'Json/CopyFixedExpenseEntry',
+                data: {},
+                success: function (ResultMessage) {
+                    return ResultMessage;
+                }
+            });
+        return CopyResult;
+    }
+
     CreateModel(UserId, Title, Date, Description, Category, Amount, Split) {
         const Model = {
             UserId: UserId,

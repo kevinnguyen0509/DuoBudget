@@ -199,6 +199,9 @@ namespace DuoBudget.DataFatory.GetData
         }
 
 
+
+        /*****************************Fixed***********************************/
+
         /// <summary>
         /// Gets All Fixed expense for this month and year for the user logged in
         /// </summary>
@@ -266,6 +269,9 @@ namespace DuoBudget.DataFatory.GetData
 
             return expenseList;
         }
+
+
+        /*****************************Split***********************************/
 
         /// <summary>
         /// Gets All Split expense for this month and year for the user logged in

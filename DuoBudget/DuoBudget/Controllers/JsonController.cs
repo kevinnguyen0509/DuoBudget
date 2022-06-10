@@ -54,6 +54,11 @@ namespace DuoBudget.Controllers
             return Json(fixedExpenseModel.DeleteEntry(ID, UserId), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult CopyFixedExpenseEntry()
+        {
+            return Json(fixedExpenseModel.CopyFixedExpenseOverFromLastMonth(), JsonRequestBehavior.AllowGet);
+        }
+
         /****************************Income Expense*********************************/
         public JsonResult SaveIncomeEntry(IncomeModel incomeModel)
         {
@@ -82,5 +87,7 @@ namespace DuoBudget.Controllers
         {
             return Json(YearlyTotalsModel.GetYearlySummaryTotals(), JsonRequestBehavior.AllowGet);
         }
+
+       
     }
 }
