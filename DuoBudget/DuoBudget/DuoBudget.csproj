@@ -216,6 +216,7 @@
     <Content Include="Views\UtilComponents\_VariableLoading.cshtml" />
     <Content Include="Views\UtilComponents\_FixedLoading.cshtml" />
     <Content Include="Views\UtilComponents\_IncomeLoading.cshtml" />
+    <Content Include="Views\Home\Index\Parents\BudgetSheets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
