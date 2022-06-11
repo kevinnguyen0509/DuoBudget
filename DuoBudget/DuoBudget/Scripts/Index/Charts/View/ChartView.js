@@ -8,6 +8,7 @@ ChartIconNav.addEventListener('click', function () {
         RenderYearlySummaryChart();
         RenderMonthlyCategoriesChart();
         RenderYearlyCategoriesChart();
+        RenderYearlyExpensesChart();
     });
     
 });
@@ -134,6 +135,42 @@ function RenderYearlyCategoriesChart() {
         }]
     });
     YearlyCategoriesChart.render();
+}
+
+
+function RenderYearlyExpensesChart() {
+    var YearlyExpensesChart = new CanvasJS.Chart("YearlyExpensesChartContainer", {
+        animationEnabled: true,
+        theme: "dark2", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: "Yearly Expense By Month"
+        },
+        axisY: {
+            title: "Dollar Amount"
+        },
+        data: [{
+            type: "column",
+            showInLegend: true,
+            legendMarkerColor: "grey",
+            legendText: "Months",
+            dataPoints: [
+                { y: 300878, label: "Venezuela" },
+                { y: 266455, label: "Saudi" },
+                { y: 266455, label: "Saudi" },
+                { y: 169709, label: "Canada" },
+                { y: 158400, label: "Iran" },
+                { y: 142503, label: "Iraq" },
+                { y: 142503, label: "Iraq" },
+                { y: 101500, label: "Kuwait" },
+                { y: 101500, label: "Kuwait" },
+                { y: 97800, label: "UAE" },
+                { y: 97800, label: "UAE" },
+                { y: 80000, label: "Russia" }
+            ]
+        }]
+    });
+    YearlyExpensesChart.render();
+
 }
 
 
