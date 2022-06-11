@@ -28,6 +28,7 @@ namespace DuoBudget.DataFatory.GetData
             SQLComm = new SqlCommand(SQL, SQLConn);
             SQLComm.CommandType = CommandType.StoredProcedure;
             SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLComm.Parameters.AddWithValue("@CurrentMonth", month);
             SQLComm.Parameters.AddWithValue("@CurrentYear", year);
             SQLRec = SQLComm.ExecuteReader();
 
