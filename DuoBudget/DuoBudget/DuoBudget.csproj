@@ -154,6 +154,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Image\JumboBg.jpg" />
+    <Content Include="Content\Index\Charts.css" />
     <Content Include="Content\Index\Index.css" />
     <Content Include="Content\Login\Login.css" />
     <Content Include="Content\Modals\Shared.css" />
