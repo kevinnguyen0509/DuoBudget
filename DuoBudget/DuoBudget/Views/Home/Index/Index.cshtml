@@ -28,18 +28,28 @@
 
 </div>
 <div class="row" id="secondNavBar">
-    <i class="fa fa-file-text-o navIcon active"></i>
-    <i class="fa fa-pie-chart navIcon"></i>
+    <i id="BudgetSheetIconNav" class="fa fa-file-text-o navIcon active"></i>
+    <i id="ChartIconNav" class="fa fa-pie-chart navIcon"></i>
     <i class="fa fa-star-o navIcon"></i>
     <i class="fa fa-calendar-o navIcon"></i>
 </div>
 @Html.Hidden("UserLoggedIn", Model.User.ID)
 
 <div class="row" id="BudgetSheetRow">
-    @Html.Partial("~/Views/Home/Index/Parents/BudgetSheets.cshtml", Model)
+    <div id="BudgetSheetSection">
+        @Html.Partial("~/Views/Home/Index/Parents/BudgetSheets.cshtml", Model)
+    </div>
+
+    <div id="ChartSection">
+       @* @Html.Partial("~/Views/Home/Charts/Parent/Charts.cshtml")*@
+    </div>
+
 
 </div> <!--End BUdgetsheet-->
 
 
 @Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
 <script type="module" src="~/Scripts/Index/BudgetSheet/Views/BudgetSheet.js"></script>
+<script type="module" src="~/Scripts/Index/Charts/View/ChartView.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+

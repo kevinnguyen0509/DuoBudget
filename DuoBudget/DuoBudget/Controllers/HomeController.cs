@@ -27,6 +27,7 @@ namespace DuoBudget.Controllers
         public static string FixedExpenseTablePath = "~/Views/Home/Index/_FixedExpenseTable.cshtml";
         public static string IncomeTablePath = "~/Views/Home/Index/_IncomeTable.cshtml";
         public static string SplitTablePath = "~/Views/Home/Index/_SplitExpenseTable.cshtml";
+        public static string ChartsParentPath = "~/Views/Home/Charts/Parent/Charts.cshtml";
 
         public ActionResult Index()
         {
@@ -125,6 +126,16 @@ namespace DuoBudget.Controllers
 
         }
 
+        /************************ChartParent**********************/
+        public ActionResult ChartsPartialView()
+        {
+
+            return PartialView(ChartsParentPath);
+
+        }
+
+
+        /************************Login**********************/
         public ActionResult Login()
         {
             return View(LoginPath);

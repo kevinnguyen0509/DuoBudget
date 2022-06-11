@@ -1,4 +1,4 @@
-﻿import { SummaryModel } from '../Model/SummaryModel.js'
+﻿import { SummaryModel } from '../BudgetSheet/SummaryModel.js'
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 
 let SummaryModelOption = new SummaryModel();

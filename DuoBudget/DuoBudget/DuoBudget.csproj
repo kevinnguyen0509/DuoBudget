@@ -186,13 +186,14 @@
     <Content Include="Scripts\Default\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Default\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Default\modernizr-2.8.3.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\FixedExpenseModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\IncomeModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\SplitExpenseModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\SummaryModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\VariableExpenseModel.js" />
-    <Content Include="Scripts\Index\BudgetSheet\Model\YearlyTotalModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\FixedExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\IncomeModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\SplitExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\SummaryModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\VariableExpenseModel.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\YearlyTotalModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
+    <Content Include="Scripts\Index\Charts\View\ChartView.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -217,10 +218,12 @@
     <Content Include="Views\UtilComponents\_FixedLoading.cshtml" />
     <Content Include="Views\UtilComponents\_IncomeLoading.cshtml" />
     <Content Include="Views\Home\Index\Parents\BudgetSheets.cshtml" />
+    <Content Include="Views\Home\Charts\Parent\Charts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DataFatory\Delete\" />
+    <Folder Include="Scripts\Index\Charts\Model\" />
     <Folder Include="Views\Authentication\" />
     <Folder Include="Views\Json\" />
   </ItemGroup>

@@ -1,9 +1,9 @@
-﻿import { VariableExpenseModel } from '../Model/VariableExpenseModel.js'
-import { FixedExpenseModel } from '../Model/FixedExpenseModel.js'
-import { IncomeModel } from '../Model/IncomeModel.js'
-import { SplitExpenseModel } from '../Model/SplitExpenseModel.js'
-import { SummaryModel } from '../Model/SummaryModel.js'
-import { YearlyTotalModel } from '../Model/YearlyTotalModel.js'
+﻿import { VariableExpenseModel } from '../Model/BudgetSheet/VariableExpenseModel.js'
+import { FixedExpenseModel } from '../Model/BudgetSheet/FixedExpenseModel.js'
+import { IncomeModel } from '../Model/BudgetSheet/IncomeModel.js'
+import { SplitExpenseModel } from '../Model/BudgetSheet/SplitExpenseModel.js'
+import { SummaryModel } from '../Model/BudgetSheet/SummaryModel.js'
+import { YearlyTotalModel } from '../Model/BudgetSheet/YearlyTotalModel.js'
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let SuccessMessage = 'Success';
