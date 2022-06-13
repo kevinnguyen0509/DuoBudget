@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DuoBudget.Models.BudgetModels
 {
-    public class PieChartModel : ResultMessage
+    public class PieChartCategoryModel : ResultMessage
     {
         public string Category { get; set; }
         public Decimal PercentAmount { get; set; }

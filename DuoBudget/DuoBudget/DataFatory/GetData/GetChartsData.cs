@@ -1,4 +1,5 @@
 ﻿using DuoBudget.Models.BudgetModels;
+using DuoBudget.Models.Parents;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,10 +11,12 @@ namespace DuoBudget.DataFatory.GetData
 {
     public class GetChartsData
     {
-        public PieChartModel GetMonthlyCategoriesSummaryChart(int UserID, int month, int year)
+
+        /*********************Categories*************************/
+        public PieChartCategoryModel GetMonthlyCategoriesSummaryChart(int UserID, int month, int year)
         {
 
-            PieChartModel PieChartModel = new PieChartModel();
+            PieChartCategoryModel PieChartModel = new PieChartCategoryModel();
 
             SqlConnection SQLConn = new SqlConnection();
             SqlCommand SQLComm = new SqlCommand();
@@ -59,5 +62,174 @@ namespace DuoBudget.DataFatory.GetData
 
             return PieChartModel;
         }
+
+
+        public PieChartCategoryModel GetYearlyCategoriesSummaryChart(int UserID, int year)
+        {
+
+            PieChartCategoryModel PieChartModel = new PieChartCategoryModel();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetYearlyCategoriesSummaryChart]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLComm.Parameters.AddWithValue("@CurrentYear", year);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                if (SQLRec.Read())
+                {
+                    PieChartModel.Category = SQLRec.GetString(SQLRec.GetOrdinal("Category"));
+                    PieChartModel.PercentAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("PercentAmount"));
+                    PieChartModel.DollarAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("DollarAmount"));
+                    PieChartModel.AmountTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("AmountTotal"));
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                PieChartModel.ReturnMessage = e.Message;
+                PieChartModel.ReturnStatus = "Failed";
+                PieChartModel.newId = -1;
+
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return PieChartModel;
+        }
+
+        /*********************Monthly Summary*************************/
+        public SummaryChartModel GetMonthlySummaryChart(int UserID, int month, int year)
+        {
+
+            SummaryChartModel SummaryChartModel = new SummaryChartModel();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetMonthlySummaryChart]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLComm.Parameters.AddWithValue("@CurrentMonth", month);
+            SQLComm.Parameters.AddWithValue("@CurrentYear", year);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                if (SQLRec.Read())
+                {
+                   
+                    SummaryChartModel.VariableTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal"));
+                    SummaryChartModel.VariablePercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariablePercentage"));
+                    SummaryChartModel.FixedTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedTotal"));
+                    SummaryChartModel.FixedPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedPercentage"));
+                    SummaryChartModel.FixedExpenseSplitTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedExpenseSplitTotal"));
+                    SummaryChartModel.FixedSplitTotalPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedSplitTotalPercentage"));
+                    SummaryChartModel.VariableSplitSumTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableSplitSumTotal"));
+                    SummaryChartModel.VariableSplitSumTotalPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableSplitSumTotalPercentage"));
+                    SummaryChartModel.Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total"));
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                SummaryChartModel.ReturnMessage = e.Message;
+                SummaryChartModel.ReturnStatus = "Failed";
+                SummaryChartModel.newId = -1;
+
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return SummaryChartModel;
+        }
+
+        public SummaryChartModel GetYearlySummaryChart(int UserID, int month, int year)
+        {
+
+            SummaryChartModel SummaryChartModel = new SummaryChartModel();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetYearlySummaryChart] ";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLComm.Parameters.AddWithValue("@CurrentMonth", month);
+            SQLComm.Parameters.AddWithValue("@CurrentYear", year);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                if (SQLRec.Read())
+                {
+
+                    SummaryChartModel.VariableTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal"));
+                    SummaryChartModel.VariablePercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariablePercentage"));
+                    SummaryChartModel.FixedTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedTotal"));
+                    SummaryChartModel.FixedPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedPercentage"));
+                    SummaryChartModel.FixedExpenseSplitTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedExpenseSplitTotal"));
+                    SummaryChartModel.FixedSplitTotalPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedSplitTotalPercentage"));
+                    SummaryChartModel.VariableSplitSumTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableSplitSumTotal"));
+                    SummaryChartModel.VariableSplitSumTotalPercentage = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableSplitSumTotalPercentage"));
+                    SummaryChartModel.Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total"));
+
+                }
+            }
+            catch (Exception e)
+            {
+
+                SummaryChartModel.ReturnMessage = e.Message;
+                SummaryChartModel.ReturnStatus = "Failed";
+                SummaryChartModel.newId = -1;
+
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return SummaryChartModel;
+        }
+
+
+
+
     }
 }
+
+
