@@ -1,6 +1,5 @@
 ﻿using DuoBudget.DataFatory.GetData;
 using DuoBudget.Models.BudgetModels;
-using DuoBudget.Models.Parents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,29 +7,25 @@ using System.Web;
 
 namespace DuoBudget.Models.ChartModels
 {
-    public class SummaryChartOptions : SummaryChartModel
+    public class PieChartCategoryOptions : PieChartCategoryModel
     {
-        GetChartsData getChartData = new GetChartsData();
-
-        /*********************Summary******************************/
-        public SummaryChartModel GetMonthlySummaryChart()
+        GetChartsData getChartsData = new GetChartsData();
+        public List<PieChartCategoryModel> GetMonthlyCategoryChart()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
             int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
             int curentMonth = Int32.Parse(DateTime.Now.ToString("MM"));
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
-            return getChartData.GetMonthlySummaryChart(OwnerID, curentMonth, currentYear);
+            return getChartsData.GetMonthlyCategoriesSummaryChart(OwnerID, curentMonth, currentYear);
         }
 
-        public SummaryChartModel GetYearlySummaryChart()
+        public List<PieChartCategoryModel> GetYearlyCategoriesSummaryChart()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
             int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Int32.Parse(DateTime.Now.ToString("MM"));
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
-            return getChartData.GetYearlySummaryChart(OwnerID, currentYear);
+            return getChartsData.GetYearlyCategoriesSummaryChart(OwnerID, currentYear);
         }
-
-
-
     }
 }

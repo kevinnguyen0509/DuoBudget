@@ -30,4 +30,30 @@ export class ChartModel {
             });
         return result;
     }
+
+    async GetMonthlyCategoryChart() {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetMonthlyCategoryChart',
+                data: {},
+                success: function (PieChartCategoryModel) {
+                    return PieChartCategoryModel;
+                }
+            });
+        return result;
+    }
+
+    async GetYearlyCategoriesSummaryChart() {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetYearlyCategoriesSummaryChart',
+                data: {},
+                success: function (PieChartCategoryModel) {
+                    return PieChartCategoryModel;
+                }
+            });
+        return result;
+    }
 }

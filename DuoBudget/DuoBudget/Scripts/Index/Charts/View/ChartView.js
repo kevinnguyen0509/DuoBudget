@@ -10,9 +10,9 @@ let ChartModelOptions = new ChartModel();
 ChartIconNav.addEventListener('click', function () {
     $('#BudgetSheetSection').load(baseUrl + 'home/ChartsPartialView', function () {
         RenderMonthlySummaryChart();
-        RenderMonthlyAmountSummaryChart();
+
         RenderYearlySummaryChart();
-        RenderYearlyAmountSummaryChart();
+
         RenderMonthlyCategoriesChart();
         RenderYearlyCategoriesChart();
         RenderYearlyExpensesChart();
@@ -24,7 +24,7 @@ ChartIconNav.addEventListener('click', function () {
 function RenderMonthlySummaryChart() {
 
     ChartModelOptions.GetMonthlySummary().then(function (SummaryChartModel) {
-        //console.log(SummaryChartModel);
+        console.log(SummaryChartModel);
 
         var MonthlySumaryChart = new CanvasJS.Chart("MonthlySummaryContainer", {
             theme: "dark2", // "light1", "light2", "dark1", "dark2"
@@ -36,16 +36,16 @@ function RenderMonthlySummaryChart() {
             data: [{
                 type: "pie",
                 startAngle: 100,
-                toolTipContent: "<b>{label}</b>: {y}%",
+                toolTipContent: "<b>{label}</b> - {y}% - (${dollarAmount})",
                 showInLegend: "true",
                 legendText: "{label}",
                 indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
+                indexLabel: "{label} - {y}% - (${dollarAmount})",
                 dataPoints: [
-                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split" },
-                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split" },
-                    { y: SummaryChartModel.VariablePercentage, label: "Variable" },
-                    { y: SummaryChartModel.FixedPercentage, label: "Fixed" },
+                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split", dollarAmount: SummaryChartModel.FixedExpenseSplitTotal},
+                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split", dollarAmount: SummaryChartModel.VariableSplitSumTotal},
+                    { y: SummaryChartModel.VariablePercentage, label: "Variable", dollarAmount: SummaryChartModel.VariableTotal},
+                    { y: SummaryChartModel.FixedPercentage, label: "Fixed", dollarAmount: SummaryChartModel.FixedTotal},
                 ]
             }]
         });
@@ -53,37 +53,6 @@ function RenderMonthlySummaryChart() {
     })
 }
 
-function RenderMonthlyAmountSummaryChart() {
-
-    ChartModelOptions.GetMonthlySummary().then(function (SummaryChartModel) {
-        //console.log(SummaryChartModel);
-
-        var MonthlySumaryChart = new CanvasJS.Chart("MonthlyAmountSummaryContainer", {
-            theme: "dark2", // "light1", "light2", "dark1", "dark2"
-            exportEnabled: true,
-            animationEnabled: true,
-            title: {
-                text: "Monthly Summary In '$'"
-            },
-            data: [{
-                type: "pie",
-                startAngle: 100,
-                toolTipContent: "<b>{label}</b>: ${y}",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 16,
-                indexLabel: "{label} - ${y}",
-                dataPoints: [
-                    { y: SummaryChartModel.FixedExpenseSplitTotal, label: "Fixed Expenses Split" },
-                    { y: SummaryChartModel.VariableSplitSumTotal, label: "Variable Expenses Split" },
-                    { y: SummaryChartModel.VariableTotal, label: "Variable" },
-                    { y: SummaryChartModel.FixedTotal, label: "Fixed" },
-                ]
-            }]
-        });
-        MonthlySumaryChart.render();
-    })
-}
 
 
 function RenderYearlySummaryChart() {
@@ -100,16 +69,16 @@ function RenderYearlySummaryChart() {
             data: [{
                 type: "pie",
                 startAngle: 100,
-                toolTipContent: "<b>{label}</b>: {y}%",
+                toolTipContent: "<b>{label}</b> - {y}% - (${dollarAmount})",
                 showInLegend: "true",
                 legendText: "{label}",
                 indexLabelFontSize: 16,
-                indexLabel: "{label} - {y}%",
+                indexLabel: "{label} - {y}% - (${dollarAmount})",
                 dataPoints: [
-                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split" },
-                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split" },
-                    { y: SummaryChartModel.VariablePercentage, label: "Variable" },
-                    { y: SummaryChartModel.FixedPercentage, label: "Fixed" },
+                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split", dollarAmount: SummaryChartModel.FixedExpenseSplitTotal },
+                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split", dollarAmount: SummaryChartModel.VariableSplitSumTotal },
+                    { y: SummaryChartModel.VariablePercentage, label: "Variable", dollarAmount: SummaryChartModel.VariableTotal },
+                    { y: SummaryChartModel.FixedPercentage, label: "Fixed", dollarAmount: SummaryChartModel.FixedTotal },
                 ]
             }]
         });
@@ -117,102 +86,80 @@ function RenderYearlySummaryChart() {
     });
 }
 
-function RenderYearlyAmountSummaryChart() {
-
-    ChartModelOptions.GetYearlySummaryChart().then(function (SummaryChartModel) {
-        //console.log(SummaryChartModel);
-        var YearlySummaryChart = new CanvasJS.Chart("YearlyAmountSummaryContainer", {
-            theme: "dark2", // "light1", "light2", "dark1", "dark2"
-            exportEnabled: true,
-            animationEnabled: true,
-            title: {
-                text: "Yearly Summary In '$'"
-            },
-            data: [{
-                type: "pie",
-                startAngle: 100,
-                toolTipContent: "<b>{label}</b>: ${y}",
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabelFontSize: 16,
-                indexLabel: "{label} - ${y}",
-                dataPoints: [
-                    { y: SummaryChartModel.FixedExpenseSplitTotal, label: "Fixed Expenses Split" },
-                    { y: SummaryChartModel.VariableSplitSumTotal, label: "Variable Expenses Split" },
-                    { y: SummaryChartModel.VariableTotal, label: "Variable" },
-                    { y: SummaryChartModel.FixedTotal, label: "Fixed" },
-                ]
-            }]
-        });
-        YearlySummaryChart.render();
-    });
-}
 
 /*************************Categories************************************ */
 function RenderMonthlyCategoriesChart() {
-    var MonthlyCategoriesChart = new CanvasJS.Chart("MonthlyCategoriesChartContainer", {
-        theme: "dark2",
-        exportFileName: "Doughnut Chart",
-        exportEnabled: true,
-        animationEnabled: true,
-        title: {
-            text: "Monthly Category Expense"
-        },
-        legend: {
-            cursor: "pointer",
-            itemclick: explodePie
-        },
-        data: [{
-            type: "doughnut",
-            innerRadius: 50,
-            showInLegend: true,
-            toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
-            indexLabel: "{name} - #percent%",
-            dataPoints: [
-                { y: 450, name: "Food" },
-                { y: 120, name: "Insurance" },
-                { y: 300, name: "Travelling" },
-                { y: 800, name: "Housing" },
-                { y: 150, name: "Education" },
-                { y: 150, name: "Shopping" },
-                { y: 250, name: "Others" }
-            ]
-        }]
-    });
-    MonthlyCategoriesChart.render();
+    ChartModelOptions.GetMonthlyCategoryChart().then(function (PieChartCategoryModel) {
+         console.log(PieChartCategoryModel);
+
+        let CategoryArray = [];
+        for (let i = 0; i < PieChartCategoryModel.length; i++) {
+            CategoryArray.push({ y: PieChartCategoryModel[i].PercentAmount, name: PieChartCategoryModel[i].Category, dollaramount: PieChartCategoryModel[i].DollarAmount})
+        }
+
+        console.log(CategoryArray)
+        var MonthlyCategoriesChart = new CanvasJS.Chart("MonthlyCategoriesChartContainer", {
+            theme: "dark2",
+            exportFileName: "Doughnut Chart",
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "Monthly Category Expense"
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: explodePie
+            },
+            data: [{
+                type: "doughnut",
+                innerRadius: 50,
+                showInLegend: true,
+                toolTipContent: "<b>{name}</b> - {y}% - (${dollaramount})",
+                indexLabel: "{name} - {y}% - (${dollaramount})",
+                dataPoints: CategoryArray
+            }]
+        });
+        MonthlyCategoriesChart.render();
+
+    })
+
 }
 
 function RenderYearlyCategoriesChart() {
-    var YearlyCategoriesChart = new CanvasJS.Chart("YearlyCategoriesChartContainer", {
-        theme: "dark2",
-        exportFileName: "Doughnut Chart",
-        exportEnabled: true,
-        animationEnabled: true,
-        title: {
-            text: "Yearly Category Expense"
-        },
-        legend: {
-            cursor: "pointer",
-            itemclick: explodePie
-        },
-        data: [{
-            type: "doughnut",
-            innerRadius: 50,
-            showInLegend: true,
-            toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
-            indexLabel: "{name} - #percent%",
-            dataPoints: [
-                { y: 450, name: "Food" },
-                { y: 120, name: "Insurance" },
-                { y: 300, name: "Travelling" },
-                { y: 800, name: "Housing" },
-                { y: 150, name: "Education" },
-                { y: 150, name: "Shopping" },
-                { y: 250, name: "Others" }
-            ]
-        }]
+
+    ChartModelOptions.GetYearlyCategoriesSummaryChart().then(function (PieChartCategoryModel) {
+        console.log(PieChartCategoryModel);
+
+        let CategoryArray = [];
+        for (let i = 0; i < PieChartCategoryModel.length; i++) {
+            CategoryArray.push({ y: PieChartCategoryModel[i].PercentAmount, name: PieChartCategoryModel[i].Category, dollaramount: PieChartCategoryModel[i].DollarAmount })
+        }
+
+        var YearlyCategoriesChart = new CanvasJS.Chart("YearlyCategoriesChartContainer", {
+            theme: "dark2",
+            exportFileName: "Doughnut Chart",
+            exportEnabled: true,
+            animationEnabled: true,
+            title: {
+                text: "Yearly Category Expense"
+            },
+            legend: {
+                cursor: "pointer",
+                itemclick: explodePie
+            },
+            data: [{
+                type: "doughnut",
+                innerRadius: 50,
+                showInLegend: true,
+                toolTipContent: "<b>{name}</b> - {y}% - (${dollaramount})",
+                indexLabel: "{name} - {y}% - (${dollaramount})",
+                dataPoints: CategoryArray
+            }]
+        });
+        YearlyCategoriesChart.render();
     });
-    YearlyCategoriesChart.render();
+
+
 }
 
 

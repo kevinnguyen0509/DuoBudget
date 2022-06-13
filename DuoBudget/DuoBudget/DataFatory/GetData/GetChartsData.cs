@@ -13,10 +13,10 @@ namespace DuoBudget.DataFatory.GetData
     {
 
         /*********************Categories*************************/
-        public PieChartCategoryModel GetMonthlyCategoriesSummaryChart(int UserID, int month, int year)
+        public List<PieChartCategoryModel> GetMonthlyCategoriesSummaryChart(int UserID, int month, int year)
         {
 
-            PieChartCategoryModel PieChartModel = new PieChartCategoryModel();
+            List<PieChartCategoryModel> PieChartModel = new List<PieChartCategoryModel>();
 
             SqlConnection SQLConn = new SqlConnection();
             SqlCommand SQLComm = new SqlCommand();
@@ -37,21 +37,26 @@ namespace DuoBudget.DataFatory.GetData
 
             try
             {
-                if (SQLRec.Read())
+                while (SQLRec.Read())
                 {
-                    PieChartModel.Category = SQLRec.GetString(SQLRec.GetOrdinal("Category"));
-                    PieChartModel.PercentAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("PercentAmount"));
-                    PieChartModel.DollarAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("DollarAmount"));
-                    PieChartModel.AmountTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("AmountTotal"));
-                   
+                    PieChartModel.Add(new PieChartCategoryModel
+                    {
+                        Category = SQLRec.GetString(SQLRec.GetOrdinal("Category")),
+                        PercentAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("PercentAmount")),
+                        DollarAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("DollarAmount")),
+                        AmountTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("AmountTotal"))
+                    });
                 }
             }
             catch (Exception e)
             {
+                PieChartModel.Add(new PieChartCategoryModel
+                {
+                    ReturnMessage = e.Message,
+                    ReturnStatus = "Failed",
+                    newId = -1
+                });
 
-                PieChartModel.ReturnMessage = e.Message;
-                PieChartModel.ReturnStatus = "Failed";
-                PieChartModel.newId = -1;
 
             }
             finally
@@ -59,15 +64,14 @@ namespace DuoBudget.DataFatory.GetData
                 SQLRec.Close();
                 SQLConn.Close();
             }
-
             return PieChartModel;
         }
 
 
-        public PieChartCategoryModel GetYearlyCategoriesSummaryChart(int UserID, int year)
+        public List<PieChartCategoryModel> GetYearlyCategoriesSummaryChart(int UserID, int year)
         {
 
-            PieChartCategoryModel PieChartModel = new PieChartCategoryModel();
+            List<PieChartCategoryModel> PieChartModel = new List<PieChartCategoryModel>();
 
             SqlConnection SQLConn = new SqlConnection();
             SqlCommand SQLComm = new SqlCommand();
@@ -87,21 +91,26 @@ namespace DuoBudget.DataFatory.GetData
 
             try
             {
-                if (SQLRec.Read())
+                while (SQLRec.Read())
                 {
-                    PieChartModel.Category = SQLRec.GetString(SQLRec.GetOrdinal("Category"));
-                    PieChartModel.PercentAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("PercentAmount"));
-                    PieChartModel.DollarAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("DollarAmount"));
-                    PieChartModel.AmountTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("AmountTotal"));
-
+                    PieChartModel.Add(new PieChartCategoryModel
+                    {
+                        Category = SQLRec.GetString(SQLRec.GetOrdinal("Category")),
+                        PercentAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("PercentAmount")),
+                        DollarAmount = SQLRec.GetDecimal(SQLRec.GetOrdinal("DollarAmount")),
+                        AmountTotal = SQLRec.GetDecimal(SQLRec.GetOrdinal("AmountTotal"))
+                    });
                 }
             }
             catch (Exception e)
             {
+                PieChartModel.Add(new PieChartCategoryModel
+                {
+                    ReturnMessage = e.Message,
+                    ReturnStatus = "Failed",
+                    newId = -1
+                });
 
-                PieChartModel.ReturnMessage = e.Message;
-                PieChartModel.ReturnStatus = "Failed";
-                PieChartModel.newId = -1;
 
             }
             finally
@@ -109,7 +118,6 @@ namespace DuoBudget.DataFatory.GetData
                 SQLRec.Close();
                 SQLConn.Close();
             }
-
             return PieChartModel;
         }
 
