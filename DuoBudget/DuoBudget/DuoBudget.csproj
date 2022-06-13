@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JsonChartController.cs" />
     <Compile Include="Controllers\JsonController.cs" />
     <Compile Include="DataFatory\DeleteBudgetsheetData.cs" />
     <Compile Include="DataFatory\GetData\GetBudgetSheetData.cs" />
@@ -132,6 +133,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChartModels\SummaryChartOptions.cs" />
+    <Compile Include="Models\Parents\MonthlySummaryBarChartModel.cs" />
     <Compile Include="Models\Parents\PieChartCategoryModel.cs" />
     <Compile Include="Models\BudgetModels\FixedExpenseModel.cs" />
     <Compile Include="Models\BudgetModels\IncomeModel.cs" />
@@ -229,6 +232,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="DataFatory\Delete\" />
     <Folder Include="Views\Authentication\" />
+    <Folder Include="Views\JsonChart\" />
     <Folder Include="Views\Json\" />
   </ItemGroup>
   <ItemGroup>

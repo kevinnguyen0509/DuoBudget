@@ -170,7 +170,7 @@ namespace DuoBudget.DataFatory.GetData
             return SummaryChartModel;
         }
 
-        public SummaryChartModel GetYearlySummaryChart(int UserID, int month, int year)
+        public SummaryChartModel GetYearlySummaryChart(int UserID, int year)
         {
 
             SummaryChartModel SummaryChartModel = new SummaryChartModel();
@@ -184,11 +184,10 @@ namespace DuoBudget.DataFatory.GetData
             SQLConn.Open();
 
             /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
-            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetYearlySummaryChart] ";
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetYearlySummaryChart]";
             SQLComm = new SqlCommand(SQL, SQLConn);
             SQLComm.CommandType = CommandType.StoredProcedure;
             SQLComm.Parameters.AddWithValue("@UserId", UserID);
-            SQLComm.Parameters.AddWithValue("@CurrentMonth", month);
             SQLComm.Parameters.AddWithValue("@CurrentYear", year);
             SQLRec = SQLComm.ExecuteReader();
 
@@ -226,7 +225,58 @@ namespace DuoBudget.DataFatory.GetData
             return SummaryChartModel;
         }
 
+        /*********************Monthly Summary Chart*************************/
+        public List<MonthlySummaryBarChartModel> GetMonthlyAmountsForTheYearChart(int UserID)
+        {
 
+            List<MonthlySummaryBarChartModel> MonthlySummaryBarChartModel = new List<MonthlySummaryBarChartModel>();
+
+            SqlConnection SQLConn = new SqlConnection();
+            SqlCommand SQLComm = new SqlCommand();
+            SqlDataReader SQLRec;
+
+            // Configure the ConnectionString to access the database content
+            SQLConn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["tableCon"].ConnectionString;
+            SQLConn.Open();
+
+            /*string SQL = "SELECT * FROM dbo.GeneralLiabilityClaims";*/
+            string SQL = "[dbo].[dbo.ssp_BudgetSheet_GetMonthlyAmountsForTheYearChart]";
+            SQLComm = new SqlCommand(SQL, SQLConn);
+            SQLComm.CommandType = CommandType.StoredProcedure;
+            SQLComm.Parameters.AddWithValue("@UserId", UserID);
+            SQLRec = SQLComm.ExecuteReader();
+
+            try
+            {
+                while (SQLRec.Read())
+                {
+                    MonthlySummaryBarChartModel.Add(new MonthlySummaryBarChartModel
+                    {
+                        VariableExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal")),
+                        FixedExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal")),
+                        SpltExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("SpltExpense")),
+                        Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total")),
+                    });
+
+                }
+            }
+            catch (Exception e)
+            {
+                MonthlySummaryBarChartModel.Add(new MonthlySummaryBarChartModel
+                {
+                    ReturnMessage = e.Message,
+                    ReturnStatus = "Failed",
+                    newId = -1
+                });
+            }
+            finally
+            {
+                SQLRec.Close();
+                SQLConn.Close();
+            }
+
+            return MonthlySummaryBarChartModel;
+        }
 
 
     }

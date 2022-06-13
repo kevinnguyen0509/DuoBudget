@@ -5,7 +5,29 @@ export class ChartModel {
     constructor() {
 
     }
-    GetMonthlySummary() {
+    async GetMonthlySummary() {
+        const result =
+        await $.ajax({
+            type: 'POST',
+            url: baseUrl + 'JsonChart/GetMonthlySummaryChart',
+            data: {},
+            success: function (SummaryChartModel) {
+                return SummaryChartModel;
+            }
+        });
+        return result;
+    }
 
+    async GetYearlySummaryChart() {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetYearlySummaryChart',
+                data: {},
+                success: function (SummaryChartModel) {
+                    return SummaryChartModel;
+                }
+            });
+        return result;
     }
 }
