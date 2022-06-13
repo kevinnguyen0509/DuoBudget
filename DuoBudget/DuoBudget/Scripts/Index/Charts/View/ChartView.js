@@ -24,7 +24,7 @@ ChartIconNav.addEventListener('click', function () {
 function RenderMonthlySummaryChart() {
 
     ChartModelOptions.GetMonthlySummary().then(function (SummaryChartModel) {
-        console.log(SummaryChartModel);
+        //console.log(SummaryChartModel);
 
         var MonthlySumaryChart = new CanvasJS.Chart("MonthlySummaryContainer", {
             theme: "dark2", // "light1", "light2", "dark1", "dark2"
@@ -90,14 +90,14 @@ function RenderYearlySummaryChart() {
 /*************************Categories************************************ */
 function RenderMonthlyCategoriesChart() {
     ChartModelOptions.GetMonthlyCategoryChart().then(function (PieChartCategoryModel) {
-         console.log(PieChartCategoryModel);
+         //console.log(PieChartCategoryModel);
 
         let CategoryArray = [];
         for (let i = 0; i < PieChartCategoryModel.length; i++) {
             CategoryArray.push({ y: PieChartCategoryModel[i].PercentAmount, name: PieChartCategoryModel[i].Category, dollaramount: PieChartCategoryModel[i].DollarAmount})
         }
 
-        console.log(CategoryArray)
+        //console.log(CategoryArray)
         var MonthlyCategoriesChart = new CanvasJS.Chart("MonthlyCategoriesChartContainer", {
             theme: "dark2",
             exportFileName: "Doughnut Chart",
@@ -128,7 +128,7 @@ function RenderMonthlyCategoriesChart() {
 function RenderYearlyCategoriesChart() {
 
     ChartModelOptions.GetYearlyCategoriesSummaryChart().then(function (PieChartCategoryModel) {
-        console.log(PieChartCategoryModel);
+        //console.log(PieChartCategoryModel);
 
         let CategoryArray = [];
         for (let i = 0; i < PieChartCategoryModel.length; i++) {
@@ -164,37 +164,41 @@ function RenderYearlyCategoriesChart() {
 
 
 function RenderYearlyExpensesChart() {
-    var YearlyExpensesChart = new CanvasJS.Chart("YearlyExpensesChartContainer", {
-        animationEnabled: true,
-        theme: "dark2", // "light1", "light2", "dark1", "dark2"
-        title: {
-            text: "Yearly Expense By Month"
-        },
-        axisY: {
-            title: "Dollar Amount"
-        },
-        data: [{
-            type: "column",
-            showInLegend: true,
-            legendMarkerColor: "grey",
-            legendText: "Months",
-            dataPoints: [
-                { y: 300878, label: "Venezuela" },
-                { y: 266455, label: "Saudi" },
-                { y: 266455, label: "Saudi" },
-                { y: 169709, label: "Canada" },
-                { y: 158400, label: "Iran" },
-                { y: 142503, label: "Iraq" },
-                { y: 142503, label: "Iraq" },
-                { y: 101500, label: "Kuwait" },
-                { y: 101500, label: "Kuwait" },
-                { y: 97800, label: "UAE" },
-                { y: 97800, label: "UAE" },
-                { y: 80000, label: "Russia" }
-            ]
-        }]
+
+    ChartModelOptions.GetMonthlyAmountsForTheYearChart().then(function (MonthlySummaryBarChartModel) {
+        //console.log(MonthlySummaryBarChartModel)
+        var YearlyExpensesChart = new CanvasJS.Chart("YearlyExpensesChartContainer", {
+            animationEnabled: true,
+            theme: "dark2", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Yearly Expense By Month"
+            },
+            axisY: {
+                title: "Dollar Amount"
+            },
+            data: [{
+                type: "column",
+                showInLegend: true,
+                legendMarkerColor: "grey",
+                legendText: "Months",
+                dataPoints: [
+                    { y: MonthlySummaryBarChartModel[0].Total, label: "January" },
+                    { y: MonthlySummaryBarChartModel[1].Total, label: "February" },
+                    { y: MonthlySummaryBarChartModel[2].Total, label: "March" },
+                    { y: MonthlySummaryBarChartModel[3].Total, label: "April" },
+                    { y: MonthlySummaryBarChartModel[4].Total, label: "May" },
+                    { y: MonthlySummaryBarChartModel[5].Total, label: "June" },
+                    { y: MonthlySummaryBarChartModel[6].Total, label: "July" },
+                    { y: MonthlySummaryBarChartModel[7].Total, label: "August" },
+                    { y: MonthlySummaryBarChartModel[8].Total, label: "September" },
+                    { y: MonthlySummaryBarChartModel[9].Total, label: "October" },
+                    { y: MonthlySummaryBarChartModel[10].Total, label: "November" },
+                    { y: MonthlySummaryBarChartModel[11].Total, label: "December" }
+                ]
+            }]
+        });
+        YearlyExpensesChart.render();
     });
-    YearlyExpensesChart.render();
 
 }
 

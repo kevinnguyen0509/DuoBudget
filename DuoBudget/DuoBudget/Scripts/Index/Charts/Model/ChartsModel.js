@@ -56,4 +56,17 @@ export class ChartModel {
             });
         return result;
     }
+
+    async GetMonthlyAmountsForTheYearChart() {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetMonthlyAmountsForTheYearChart',
+                data: {},
+                success: function (MonthlySummaryBarChartModel) {
+                    return MonthlySummaryBarChartModel;
+                }
+            });
+        return result;
+    }
 }

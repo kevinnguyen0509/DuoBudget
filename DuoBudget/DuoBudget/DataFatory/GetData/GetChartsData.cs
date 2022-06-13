@@ -1,4 +1,5 @@
 ﻿using DuoBudget.Models.BudgetModels;
+using DuoBudget.Models.ChartModels;
 using DuoBudget.Models.Parents;
 using System;
 using System.Collections.Generic;
@@ -260,8 +261,8 @@ namespace DuoBudget.DataFatory.GetData
                 {
                     MonthlySummaryBarChartModel.Add(new MonthlySummaryBarChartModel
                     {
-                        VariableExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal")),
-                        FixedExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableTotal")),
+                        VariableExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("VariableExpense")),
+                        FixedExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("FixedExpense")),
                         SpltExpense = SQLRec.GetDecimal(SQLRec.GetOrdinal("SpltExpense")),
                         Total = SQLRec.GetDecimal(SQLRec.GetOrdinal("Total")),
                     });

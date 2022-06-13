@@ -15,6 +15,7 @@ namespace DuoBudget.Controllers
         // GET: JsonChart
         SummaryChartOptions SummaryChartOptions = new SummaryChartOptions();
         PieChartCategoryOptions pieChartCategoryOptions = new PieChartCategoryOptions();
+        MonthlyAmountsForTheYearOption MonthlyAmountsForTheYearOption = new MonthlyAmountsForTheYearOption();
         public JsonResult GetMonthlySummaryChart()
         {
             SummaryChartModel summaryChartModel = SummaryChartOptions.GetMonthlySummaryChart();
@@ -38,6 +39,12 @@ namespace DuoBudget.Controllers
         {
             List<PieChartCategoryModel> PieChartCategoryModel = pieChartCategoryOptions.GetYearlyCategoriesSummaryChart();
             return Json(PieChartCategoryModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMonthlyAmountsForTheYearChart()
+        {
+            List<MonthlySummaryBarChartModel> MonthlySummaryBarChartModel = MonthlyAmountsForTheYearOption.GetMonthlyAmountsForTheYearChart();
+            return Json(MonthlySummaryBarChartModel, JsonRequestBehavior.AllowGet);
         }
     }
 }
