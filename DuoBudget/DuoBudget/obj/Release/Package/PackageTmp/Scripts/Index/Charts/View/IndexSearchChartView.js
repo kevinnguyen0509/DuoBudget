@@ -1,7 +1,12 @@
 ﻿import { ChartModel } from '../Model/ChartsModel.js'
 
+
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let ChartIconNav = document.getElementById('ChartIconNav');
+
+let month = document.getElementById('monthNumber').value * 1;
+let year = document.getElementById('year').value * 1;
+
 
 //Classes
 let ChartModelOptions = new ChartModel();
@@ -16,13 +21,13 @@ ChartIconNav.addEventListener('click', function () {
         RenderYearlyCategoriesChart();
         RenderYearlyExpensesChart();
     });
-    
+
 });
 
 /*************************Summary************************************ */
 function RenderMonthlySummaryChart() {
 
-    ChartModelOptions.GetMonthlySummary().then(function (SummaryChartModel) {
+    ChartModelOptions.GetSpecificMonthlySummary(month, year).then(function (SummaryChartModel) {
         //console.log(SummaryChartModel);
 
         var MonthlySumaryChart = new CanvasJS.Chart("MonthlySummaryContainer", {
@@ -41,10 +46,10 @@ function RenderMonthlySummaryChart() {
                 indexLabelFontSize: 16,
                 indexLabel: "{label} - {y}% - (${dollarAmount})",
                 dataPoints: [
-                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split", dollarAmount: SummaryChartModel.FixedExpenseSplitTotal},
-                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split", dollarAmount: SummaryChartModel.VariableSplitSumTotal},
-                    { y: SummaryChartModel.VariablePercentage, label: "Variable", dollarAmount: SummaryChartModel.VariableTotal},
-                    { y: SummaryChartModel.FixedPercentage, label: "Fixed", dollarAmount: SummaryChartModel.FixedTotal},
+                    { y: SummaryChartModel.FixedSplitTotalPercentage, label: "Fixed Expenses Split", dollarAmount: SummaryChartModel.FixedExpenseSplitTotal },
+                    { y: SummaryChartModel.VariableSplitSumTotalPercentage, label: "Variable Expenses Split", dollarAmount: SummaryChartModel.VariableSplitSumTotal },
+                    { y: SummaryChartModel.VariablePercentage, label: "Variable", dollarAmount: SummaryChartModel.VariableTotal },
+                    { y: SummaryChartModel.FixedPercentage, label: "Fixed", dollarAmount: SummaryChartModel.FixedTotal },
                 ]
             }]
         });
@@ -88,12 +93,12 @@ function RenderYearlySummaryChart() {
 
 /*************************Categories************************************ */
 function RenderMonthlyCategoriesChart() {
-    ChartModelOptions.GetMonthlyCategoryChart().then(function (PieChartCategoryModel) {
-         //console.log(PieChartCategoryModel);
+    ChartModelOptions.GetSpecificMonthlyCategoryChart(month, year).then(function (PieChartCategoryModel) {
+        //console.log(PieChartCategoryModel);
 
         let CategoryArray = [];
         for (let i = 0; i < PieChartCategoryModel.length; i++) {
-            CategoryArray.push({ y: PieChartCategoryModel[i].PercentAmount, name: PieChartCategoryModel[i].Category, dollaramount: PieChartCategoryModel[i].DollarAmount})
+            CategoryArray.push({ y: PieChartCategoryModel[i].PercentAmount, name: PieChartCategoryModel[i].Category, dollaramount: PieChartCategoryModel[i].DollarAmount })
         }
 
         //console.log(CategoryArray)

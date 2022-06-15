@@ -19,7 +19,7 @@
             <td> <textarea name="expenseDescription" title="Expense Description" class="form-control" id="expenseDescription" rows="1"></textarea></td>
             <td>
                 <select class="form-control" name="expenseCategories" id="expenseCategories">
-                    <option value="misc">misc</option>
+                    <option value="misc">..Choose..</option>
                     @foreach (var category in Model.Categories)
                     {
                         <option value="@category.Option">@category.Option</option>

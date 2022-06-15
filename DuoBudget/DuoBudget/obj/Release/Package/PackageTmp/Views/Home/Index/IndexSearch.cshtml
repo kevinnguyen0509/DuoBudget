@@ -1,7 +1,7 @@
 ﻿@model DuoBudget.Models.ViewModels.IndexViewModel
 
 @{
-    ViewBag.Title = "DuoBudget";
+    ViewBag.Title = "Index Search";
     <link type="text/css" rel="stylesheet" href="~/Content/Index/Index.css" />
 }
 
@@ -9,10 +9,10 @@
 <div class="row jumbotron">
     <div class="col-xs-12 col-md-6" id="MonthlySumaryContainer">
         <h2>Monthly Summary:</h2>
-        <h3 class="TextColor"><span id="CurrentMonth">June</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
+        <h3 class="TextColor"><span id="CurrentMonth">@TempData["monthName"]</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
         <h4 class="TextColor">
-            $<span id="incomeSummaryMonthLbl">0.00</span> - 
-            $<span id="ExpenseSummaryMonthLbl">0.00</span> + 
+            $<span id="incomeSummaryMonthLbl">0.00</span> -
+            $<span id="ExpenseSummaryMonthLbl">0.00</span> +
             $<span id="SplitSummaryMonthlyLbl">0.00</span>
         </h4>
         <button class="btn btn-primary btn-lg ButtonComponent" data-toggle="modal" data-target="#IncomeModal">View/Edit</button>
@@ -33,6 +33,8 @@
     <i class="fa fa-calendar-o navIcon" data-toggle="modal" data-target="#ChangeDateModal"></i>
 </div>
 @Html.Hidden("UserLoggedIn", Model.User.ID)
+@Html.Hidden("monthNumber", TempData["month"])
+@Html.Hidden("year", TempData["year"])
 
 <div class="row" id="BudgetSheetRow">
     <div id="BudgetSheetSection">
@@ -40,7 +42,7 @@
     </div>
 
     <div id="ChartSection">
-       @* @Html.Partial("~/Views/Home/Charts/Parent/Charts.cshtml")*@
+        @* @Html.Partial("~/Views/Home/Charts/Parent/Charts.cshtml")*@
     </div>
 
 
@@ -48,7 +50,9 @@
 
 
 @Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
-<script type="module" src="~/Scripts/Index/BudgetSheet/Views/BudgetSheet.js"></script>
-<script type="module" src="~/Scripts/Index/Charts/View/ChartView.js"></script>
+<script type="module" src="~/Scripts/Index/BudgetSheet/Views/IndexSearch.js"></script>
+<script type="module" src="~/Scripts/Index/Charts/View/IndexSearchChartView.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+@*SummaryModelOption.ReloadMonthlySummaryLabels();*@
+@*YearlyTotalOptions.ReloadYearlySummaryTotal();*@
