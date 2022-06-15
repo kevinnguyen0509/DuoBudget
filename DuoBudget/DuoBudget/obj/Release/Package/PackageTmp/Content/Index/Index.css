@@ -1,0 +1,49 @@
+﻿/*
+    #f8f9fd - component background - color
+    #3547ac - Medium Purple
+    #3546aa - Hover Purple
+    #dce2f4 - light Purple
+    #f1582f - orange
+    #ffffff - background
+    #0e1455 - text Deep purple color
+
+*/
+
+.jumbotron {
+    background-image: url("../../Content/Image/JumboBg.jpg") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+#MonthlySumaryContainer {
+    background: rgba(204, 204, 204, 0.2);
+    padding: 25px;
+    
+}
+
+#YearlySumaryContainer {
+    background: rgb(176 123 191 / 0.20);
+    padding: 25px;
+    text-align: right;
+}
+
+.TableComponentContainer {
+    height: 300px;
+    background: #f8f9fd;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.TableHeaderSplit {
+    background: #0e1455;
+    color: #ffffff;
+    height: auto !important;
+}
+
+.BudgetSheeTitle,
+.VariableExpenseDelete,
+.FixedExpenseDelete,
+.IncomeExpenseDelete {
+    cursor: pointer;
+}

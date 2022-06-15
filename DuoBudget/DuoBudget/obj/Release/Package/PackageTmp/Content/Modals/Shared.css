@@ -1,0 +1,29 @@
+﻿/*
+    #f8f9fd - component background - color
+    #3547ac - Medium Purple
+    #3546aa - Hover Purple
+    #dce2f4 - light Purple
+    #f1582f - orange
+    #ffffff - background
+    #0e1455 - text Deep purple color
+
+*/
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    background: #3547ac;
+    color: #fff;
+    border-radius: 5px;
+    justify-content: space-around;
+}
+
+.modal-title{
+    margin: 0px;
+}
+
+.modal-body{
+    overflow-x: auto;
+    max-height: 500px;
+}
+

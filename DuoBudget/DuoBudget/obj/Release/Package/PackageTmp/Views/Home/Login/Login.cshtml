@@ -1,0 +1,31 @@
+﻿
+@{
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/Login.css" />
+    ViewBag.Title = "Login";
+}
+
+<div id="LoginBody">
+    <div id="LoginContainer" class="defaultBoxShadow">
+        <div id="LoginLogoContainer">
+            <div id="LogoBackground" class="defaultBoxShadow"><i class="fa fa-user-o" id="LoginIcon"></i></div>
+        </div>
+        <form action="/Authentication/LoginVerification" method="post" id="LoginForm">
+            <div id="inputFields">
+                <div id="UsernameContainer" class="LoginInputContainers ">
+                    <div id="userFieldIconContainer" class="defaultBoxShadow"><i class="fa fa-user" id="userFieldIcon"></i></div>
+                    <div id="userFieldContainer"><input type="email" name="Email" id="UsernameInputTxt" class="form-control inputFields defaultBoxShadow" placeholder="Email" /></div>
+                </div>
+
+                <div id="UsernameContainer" class="LoginInputContainers ">
+                    <div id="userFieldIconContainer" class="defaultBoxShadow"><i class="fa fa-lock" id="userFieldIcon"></i></div>
+                    <div id="userFieldContainer"><input type="password" name="password" id="UsernameInputTxt" class="form-control inputFields defaultBoxShadow" placeholder="Password" /></div>
+                </div>
+
+                <div id="UsernameContainer" class="LoginInputContainers loginBtnContainer">
+                    <button type="submit" class="btn bg-danger btn-info defaultBoxShadow" id="LoginBtn">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

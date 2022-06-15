@@ -1,0 +1,45 @@
+﻿/*
+    #f8f9fd - component background - color
+    #3547ac - Medium Purple
+    #3546aa - Hover Purple
+    #dce2f4 - light Purple
+    #f1582f - orange
+    #ffffff - background
+    #0e1455 - text Deep purple color
+
+*/
+
+.navbarMain {
+    background: #0e1455;
+    border: none;
+    
+}
+
+.navIcon {
+    text-align: center;
+    vertical-align: middle;
+    margin: auto 20px;
+    
+}
+
+    .navIcon:before {
+        font-size: 28px;
+        color: #3546aa;
+        cursor: pointer;
+    }
+
+#secondNavBar {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #e9eaee;
+    height: 50px;
+    margin: 15px 0px;
+    text-align: center;
+    padding: 10px;
+}
+
+a {
+    color: #FFFFFF !important;
+    font-weight: bolder;
+}

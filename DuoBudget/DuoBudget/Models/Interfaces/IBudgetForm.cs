@@ -9,7 +9,9 @@ namespace DuoBudget.Models.Interfaces
 {
     interface IBudgetForm<T>
     {
-         List<T> GetExpenses();
+        List<T> GetExpenses();
+        List<T> GetExpenses(int Month, int Year);
+
         ResultMessage SaveExpense(T ExpenseModel);
         ResultMessage DeleteEntry(int ID, int UserId);
     }

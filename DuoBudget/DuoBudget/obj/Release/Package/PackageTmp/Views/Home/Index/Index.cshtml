@@ -1,0 +1,54 @@
+﻿@model DuoBudget.Models.ViewModels.IndexViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    <link type="text/css" rel="stylesheet" href="~/Content/Index/Index.css" />
+}
+
+
+<div class="row jumbotron">
+    <div class="col-xs-12 col-md-6" id="MonthlySumaryContainer">
+        <h2>Monthly Summary:</h2>
+        <h3 class="TextColor"><span id="CurrentMonth">June</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
+        <h4 class="TextColor">
+            $<span id="incomeSummaryMonthLbl">0.00</span> - 
+            $<span id="ExpenseSummaryMonthLbl">0.00</span> + 
+            $<span id="SplitSummaryMonthlyLbl">0.00</span>
+        </h4>
+        <button class="btn btn-primary btn-lg ButtonComponent" data-toggle="modal" data-target="#IncomeModal">View/Edit</button>
+    </div>
+
+    <div class="col-xs-12 col-md-6" id="YearlySumaryContainer">
+        <h2>Yearly Summary:</h2>
+        <h3 class="TextColor"><span id="YearlySummaryCurrentYear">2022</span>: $<span id="YearlyTotal">0.00</span></h3>
+        <h4 class="TextColor">$<span id="YearlySummaryIncome">10000</span> - ($<span id="YearlySummaryTotalVariable">0.00</span> + $<span id="YearlySummaryTotalFixed">0.00</span>) + $<span id="YearlySummarySplit">0.00</span></h4>
+        <button type="button" class="btn btn-primary btn-lg ButtonComponent" style="visibility: hidden;" data-toggle="modal" data-target="#IncomeModal">View/Edit</button>
+    </div>
+
+
+</div>
+<div class="row" id="secondNavBar">
+    <a href="/"><i id="BudgetSheetIconNav" class="fa fa-file-text-o navIcon active"></i></a>
+    <i id="ChartIconNav" class="fa fa-pie-chart navIcon"></i>
+    <i class="fa fa-calendar-o navIcon"></i>
+</div>
+@Html.Hidden("UserLoggedIn", Model.User.ID)
+
+<div class="row" id="BudgetSheetRow">
+    <div id="BudgetSheetSection">
+        @Html.Partial("~/Views/Home/Index/Parents/BudgetSheets.cshtml", Model)
+    </div>
+
+    <div id="ChartSection">
+       @* @Html.Partial("~/Views/Home/Charts/Parent/Charts.cshtml")*@
+    </div>
+
+
+</div> <!--End BUdgetsheet-->
+
+
+@Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
+<script type="module" src="~/Scripts/Index/BudgetSheet/Views/BudgetSheet.js"></script>
+<script type="module" src="~/Scripts/Index/Charts/View/ChartView.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+

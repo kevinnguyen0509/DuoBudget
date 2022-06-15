@@ -29,6 +29,15 @@ namespace DuoBudget.Models.BudgetModels
             return GetData.getAllIncomeListThisMonth(curentMonth, currentYear, OwnerID);
         }
 
+        public List<IncomeModel> GetExpenses(int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Month;
+            int currentYear = Year;
+            return GetData.getAllIncomeListThisMonth(curentMonth, currentYear, OwnerID);
+        }
+
         public ResultMessage SaveExpense(IncomeModel expenseModel)
         {
             ResultMessage returnMessage = SaveBudget.SaveIncomeEntry(expenseModel);

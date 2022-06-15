@@ -28,6 +28,15 @@ namespace DuoBudget.Models.BudgetModels
             return GetData.getAllVariableExpense(curentMonth, currentYear, OwnerID);
         }
 
+        public List<VariableExpenseModel> GetExpenses(int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Month;
+            int currentYear = Year;
+            return GetData.getAllVariableExpense(curentMonth, currentYear, OwnerID);
+        }
+
         public ResultMessage SaveExpense(VariableExpenseModel ExpenseModel)
         {
             return SaveBudgetData.SaveVariableExpenseEntry(ExpenseModel);

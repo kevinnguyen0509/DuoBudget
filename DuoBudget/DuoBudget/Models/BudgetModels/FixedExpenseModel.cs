@@ -27,6 +27,15 @@ namespace DuoBudget.Models.BudgetModels
             return GetData.getAllFixedThisMonth(curentMonth, currentYear, OwnerID);
         }
 
+        public List<FixedExpenseModel> GetExpenses(int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Month;
+            int currentYear = Year;
+            return GetData.getAllFixedThisMonth(curentMonth, currentYear, OwnerID);
+        }
+
         public ResultMessage SaveExpense(FixedExpenseModel ExpenseModel)
         {
             return SaveBudgetData.SaveFixedExpenseEntry(ExpenseModel); ;
@@ -63,5 +72,7 @@ namespace DuoBudget.Models.BudgetModels
             return resultMessage;
 
         }
+
+
     }
 }

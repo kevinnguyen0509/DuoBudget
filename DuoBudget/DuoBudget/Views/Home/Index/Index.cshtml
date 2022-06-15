@@ -1,7 +1,7 @@
 ﻿@model DuoBudget.Models.ViewModels.IndexViewModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "DuoBudget";
     <link type="text/css" rel="stylesheet" href="~/Content/Index/Index.css" />
 }
 
@@ -30,7 +30,7 @@
 <div class="row" id="secondNavBar">
     <a href="/"><i id="BudgetSheetIconNav" class="fa fa-file-text-o navIcon active"></i></a>
     <i id="ChartIconNav" class="fa fa-pie-chart navIcon"></i>
-    <i class="fa fa-calendar-o navIcon"></i>
+    <i class="fa fa-calendar-o navIcon" data-toggle="modal" data-target="#ChangeDateModal"></i>
 </div>
 @Html.Hidden("UserLoggedIn", Model.User.ID)
 

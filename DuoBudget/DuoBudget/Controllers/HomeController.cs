@@ -23,6 +23,7 @@ namespace DuoBudget.Controllers
         //Static paths
         public static string LoginPath = "/Views/Home/Login/Login.cshtml";
         public static string IndexRoute = "~/Views/Home/Index/Index.cshtml";
+        public static string IndexSearchRoute = "~/Views/Home/Index/IndexSearch.cshtml";
         public static string VariableExpenseTablePath = "~/Views/Home/Index/_VariableExpenseTable.cshtml";
         public static string FixedExpenseTablePath = "~/Views/Home/Index/_FixedExpenseTable.cshtml";
         public static string IncomeTablePath = "~/Views/Home/Index/_IncomeTable.cshtml";
@@ -49,9 +50,30 @@ namespace DuoBudget.Controllers
                 IncomeThisMonth = IncomeModelOptions.GetExpenses()
             };
 
-            return View(IndexRoute, indexViewModel);
+            return View(IndexRoute, indexViewModel);         
+        }
 
-            
+        public ActionResult IndexSearch(int MonthCalendarChoice, int CalendarYearChoice)
+        {
+            //Add test
+            //Checks to see if the user is logged in.
+            HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
+
+
+            if (CurrentUserCookie == null)
+                return RedirectToAction("Login");
+
+            IndexViewModel indexViewModel = new IndexViewModel
+            {
+                User = LoggedInuser.GetLoggedInUserCookie(),
+                VariableExpenseList = VariableExpenseOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
+                Categories = budgetTable.getAllCategories(),
+                FixedExpenses = FixedExpenseOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
+                SplitExpenses = SplitExpenseOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
+                IncomeThisMonth = IncomeModelOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice)
+            };
+
+            return View(IndexSearchRoute, indexViewModel);
         }
 
         /************************Varaible Expense**********************/

@@ -1,0 +1,46 @@
+﻿@model DuoBudget.Models.ViewModels.IndexViewModel
+
+<table class="table">
+    <thead style="background: #dce2f4; ">
+
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+    </thead>
+    <tr>
+        <th scope="row" class="tableFields"> <input type="text" name="incomeTitle" class="form-control " id="incomeTitle" aria-describedby="titleHelp" placeholder="Title" title="Title"></th>
+        <td class="tableFields"><input type="date" class="form-control" name="incomeDate" id="incomeDate" aria-describedby="emailHelp" title="incomeDate"></td>
+        <td> <textarea name="incomeDescription" title="Income Description" class="form-control" id="incomeDescription" rows="1"></textarea></td>
+        <td class="tableFields"><input type="number" name="incomeAmount" class="form-control " id="incomeAmount" aria-describedby="titleHelp" placeholder="$0.00" title="Income Amount" step='0.01' value='0.00'></td>
+        <td class="tableFields">N/A</td>
+
+    </tr>
+    <tbody id="incomeTableModal">
+
+        @foreach (var incomeEntry in Model.IncomeThisMonth)
+        {
+            string[] date = incomeEntry.Date.ToString().Split(' ');
+            <tr>
+                <th scope="row">@incomeEntry.Title</th>
+                <td>@date[0]</td>
+                <td>@incomeEntry.Description</td>
+                <td>@incomeEntry.Amount</td>
+                <td class="deleteRowButton IncomeExpenseDelete" Incomedeleteid="@incomeEntry.ID" onclick="deleteIncome(@incomeEntry.ID, @incomeEntry.UserId)"><i class="fa fa-times-circle text-center" style="color: red;"></i></td>
+
+            </tr>
+        }
+        <tr style="background: #dce2f4; ">
+            <th scope="col">Total:</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">$<span id="IncomeExpenseTotalLabel">@(Model.IncomeThisMonth.Count() == 0 ? Convert.ToDecimal("0.00") : Model.IncomeThisMonth[0].Total)</span></th>
+
+        </tr>
+    </tbody>
+</table>
