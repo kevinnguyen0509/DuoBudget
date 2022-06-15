@@ -4,6 +4,7 @@ using DuoBudget.Models.Interfaces;
 using DuoBudget.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -58,7 +59,10 @@ namespace DuoBudget.Controllers
             //Add test
             //Checks to see if the user is logged in.
             HttpCookie CurrentUserCookie = Request.Cookies["DuoBudgetCurrentUserCookie"];
-
+            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(MonthCalendarChoice);
+            TempData["monthName"] = monthName;
+            TempData["year"] = CalendarYearChoice;
+            TempData["month"] = MonthCalendarChoice;
 
             if (CurrentUserCookie == null)
                 return RedirectToAction("Login");

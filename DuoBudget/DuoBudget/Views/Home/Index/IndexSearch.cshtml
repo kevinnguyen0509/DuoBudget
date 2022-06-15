@@ -9,7 +9,7 @@
 <div class="row jumbotron">
     <div class="col-xs-12 col-md-6" id="MonthlySumaryContainer">
         <h2>Monthly Summary:</h2>
-        <h3 class="TextColor"><span id="CurrentMonth">June</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
+        <h3 class="TextColor"><span id="CurrentMonth">@TempData["monthName"]</span>: $<span id="TotalSumaryMonthlyLbl">0.00</span></h3>
         <h4 class="TextColor">
             $<span id="incomeSummaryMonthLbl">0.00</span> -
             $<span id="ExpenseSummaryMonthLbl">0.00</span> +
@@ -33,6 +33,8 @@
     <i class="fa fa-calendar-o navIcon" data-toggle="modal" data-target="#ChangeDateModal"></i>
 </div>
 @Html.Hidden("UserLoggedIn", Model.User.ID)
+@Html.Hidden("monthNumber", TempData["month"])
+@Html.Hidden("year", TempData["year"])
 
 <div class="row" id="BudgetSheetRow">
     <div id="BudgetSheetSection">
@@ -49,7 +51,7 @@
 
 @Html.Partial("~/Views/Shared/_Modals.cshtml", Model)
 <script type="module" src="~/Scripts/Index/BudgetSheet/Views/IndexSearch.js"></script>
-<script type="module" src="~/Scripts/Index/Charts/View/ChartView.js"></script>
+<script type="module" src="~/Scripts/Index/Charts/View/IndexSearchChartView.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 @*SummaryModelOption.ReloadMonthlySummaryLabels();*@

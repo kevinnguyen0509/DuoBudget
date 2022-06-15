@@ -18,6 +18,19 @@ export class ChartModel {
         return result;
     }
 
+    async GetSpecificMonthlySummary(Month, Year) {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetSpecifcMonthlySummaryChart',
+                data: { Month, Year},
+                success: function (SummaryChartModel) {
+                    return SummaryChartModel;
+                }
+            });
+        return result;
+    }
+
     async GetYearlySummaryChart() {
         const result =
             await $.ajax({
@@ -37,6 +50,19 @@ export class ChartModel {
                 type: 'POST',
                 url: baseUrl + 'JsonChart/GetMonthlyCategoryChart',
                 data: {},
+                success: function (PieChartCategoryModel) {
+                    return PieChartCategoryModel;
+                }
+            });
+        return result;
+    }
+
+    async GetSpecificMonthlyCategoryChart(Month, Year) {
+        const result =
+            await $.ajax({
+                type: 'POST',
+                url: baseUrl + 'JsonChart/GetSpecificMonthlyCategoryChart',
+                data: {Month, Year},
                 success: function (PieChartCategoryModel) {
                     return PieChartCategoryModel;
                 }

@@ -22,6 +22,15 @@ namespace DuoBudget.Models.ChartModels
             return getChartData.GetMonthlySummaryChart(OwnerID, curentMonth, currentYear);
         }
 
+        public SummaryChartModel GetMonthlySummaryChart(int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Month;
+            int currentYear = Year;
+            return getChartData.GetMonthlySummaryChart(OwnerID, curentMonth, currentYear);
+        }
+
         public SummaryChartModel GetYearlySummaryChart()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
@@ -29,6 +38,8 @@ namespace DuoBudget.Models.ChartModels
             int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
             return getChartData.GetYearlySummaryChart(OwnerID, currentYear);
         }
+
+
 
 
 

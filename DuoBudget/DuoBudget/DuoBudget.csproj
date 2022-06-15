@@ -203,8 +203,10 @@
     <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\VariableExpenseModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Model\BudgetSheet\YearlyTotalModel.js" />
     <Content Include="Scripts\Index\BudgetSheet\Views\BudgetSheet.js" />
+    <Content Include="Scripts\Index\BudgetSheet\Views\IndexSearch.js" />
     <Content Include="Scripts\Index\Charts\Model\ChartsModel.js" />
     <Content Include="Scripts\Index\Charts\View\ChartView.js" />
+    <Content Include="Scripts\Index\Charts\View\IndexSearchChartView.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

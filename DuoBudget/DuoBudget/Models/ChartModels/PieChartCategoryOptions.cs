@@ -19,6 +19,15 @@ namespace DuoBudget.Models.ChartModels
             return getChartsData.GetMonthlyCategoriesSummaryChart(OwnerID, curentMonth, currentYear);
         }
 
+        public List<PieChartCategoryModel> GetMonthlyCategoryChart(int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = Int32.Parse(UserCookie.Values["ID"]);
+            int curentMonth = Month;
+            int currentYear = Year;
+            return getChartsData.GetMonthlyCategoriesSummaryChart(OwnerID, curentMonth, currentYear);
+        }
+
         public List<PieChartCategoryModel> GetYearlyCategoriesSummaryChart()
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
