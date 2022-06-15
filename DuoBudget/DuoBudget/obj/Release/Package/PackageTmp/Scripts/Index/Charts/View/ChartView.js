@@ -2,11 +2,14 @@
 
 let baseUrl = document.getElementById('HiddenCurrentUrl').value;
 let ChartIconNav = document.getElementById('ChartIconNav');
-
+let LoadingContainer = document.getElementById('LoadingContainer');
+let LoadingOverlay = document.getElementById('LoadingOverlay')
 //Classes
 let ChartModelOptions = new ChartModel();
 
 ChartIconNav.addEventListener('click', function () {
+    LoadingContainer.classList.remove('hide');
+    LoadingOverlay.classList.remove('hide');
     $('#BudgetSheetSection').load(baseUrl + 'home/ChartsPartialView', function () {
         RenderMonthlySummaryChart();
 
@@ -197,6 +200,11 @@ function RenderYearlyExpensesChart() {
             }]
         });
         YearlyExpensesChart.render();
+        setTimeout(() => {
+            LoadingContainer.classList.add('hide');
+            LoadingOverlay.classList.add('hide');
+        }, 1000)
+
     });
 
 }
