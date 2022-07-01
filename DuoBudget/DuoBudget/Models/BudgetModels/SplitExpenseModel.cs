@@ -25,6 +25,14 @@ namespace DuoBudget.Models.BudgetModels
             return GetData.getAllSplitExpenseThisMonth(currentMonth, currentYear, OwnerID);
         }
 
+        public List<SplitExpenseModel> GetExpenses(int PartnerID)
+        {
+            int OwnerID = PartnerID;
+            int currentMonth = Int32.Parse(DateTime.Now.ToString("MM"));
+            int currentYear = Int32.Parse(DateTime.Now.ToString("yyyy"));
+            return GetData.getAllSplitExpenseThisMonth(currentMonth, currentYear, OwnerID);
+        }
+
         public List<SplitExpenseModel> GetExpenses(int Month, int Year)
         {
             HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];

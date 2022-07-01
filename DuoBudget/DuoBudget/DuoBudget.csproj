@@ -233,6 +233,7 @@
     <Content Include="Views\Home\Index\Parents\BudgetSheets.cshtml" />
     <Content Include="Views\Home\Charts\Parent\Charts.cshtml" />
     <Content Include="Views\Home\Index\IndexSearch.cshtml" />
+    <Content Include="Views\Home\Index\_PartnerSplitExpenseTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
