@@ -1,0 +1,47 @@
+﻿@model DuoBudget.Models.ViewModels.IndexViewModel
+
+
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="TableHeaderSplit">Title</th>
+            <th scope="col" class="TableHeaderSplit">Date</th>
+            <th scope="col" class="TableHeaderSplit">Description</th>
+            <th scope="col" class="TableHeaderSplit">Category</th>
+            <th scope="col" class="TableHeaderSplit">Amount</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var expenseEntry in Model.PartnerSplitExpenses)
+        {
+            string[] date = expenseEntry.Date.ToString().Split(' ');
+
+            <tr>
+                <th scope="row">@expenseEntry.Title</th>
+                <td>@date[0]</td>
+                <td>@expenseEntry.Description</td>
+                <td>@expenseEntry.Category</td>
+                <td>@(expenseEntry.Amount/2)</td>
+            </tr>
+
+            @* total = total + double.Parse(expenseEntry.Amount.ToString());*@
+        }
+
+        <tr>
+            <th scope="col" class="TableHeaderSplit">Total:</th>
+            <th scope="col" class="TableHeaderSplit"></th>
+            <th scope="col" class="TableHeaderSplit"></th>
+            <th scope="col" class="TableHeaderSplit"></th>
+            <th scope="col" class="TableHeaderSplit">$<span id="SplitExpenseTotalLabel">@(Model.PartnerSplitExpenses.Count() == 0 ? Convert.ToDecimal("0.00") : Model.PartnerSplitExpenses[0].Total)</span></th>
+
+        </tr>
+
+
+    </tbody>
+</table>
+
+
+

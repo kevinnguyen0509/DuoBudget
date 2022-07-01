@@ -71,7 +71,10 @@ namespace DuoBudget.Controllers
             if (CurrentUserCookie == null)
                 return RedirectToAction("Login");
 
-            
+            SplitExpenseModel splitExpenseModel = new SplitExpenseModel();
+            int PartnerID = CurrentUserCookie.Values[1] == null ? 0 : Int32.Parse(CurrentUserCookie.Values[1]);//Get Partner ID
+
+
             IndexViewModel indexViewModel = new IndexViewModel
             {
                 User = LoggedInuser.GetLoggedInUserCookie(),
@@ -79,7 +82,8 @@ namespace DuoBudget.Controllers
                 Categories = budgetTable.getAllCategories(),
                 FixedExpenses = FixedExpenseOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
                 SplitExpenses = SplitExpenseOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
-                IncomeThisMonth = IncomeModelOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice)
+                IncomeThisMonth = IncomeModelOptions.GetExpenses(MonthCalendarChoice, CalendarYearChoice),
+                PartnerSplitExpenses = splitExpenseModel.GetExpenses(PartnerID, MonthCalendarChoice, CalendarYearChoice)
             };
 
             return View(IndexSearchRoute, indexViewModel);

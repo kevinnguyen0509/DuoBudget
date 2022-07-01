@@ -43,6 +43,16 @@ namespace DuoBudget.Models.BudgetModels
            
         }
 
+        public List<SplitExpenseModel> GetExpenses(int PartnerID, int Month, int Year)
+        {
+            HttpCookie UserCookie = HttpContext.Current.Request.Cookies["DuoBudgetCurrentUserCookie"];
+            int OwnerID = PartnerID;
+            int currentMonth = Month;
+            int currentYear = Year;
+            return GetData.getAllSplitExpenseThisMonth(currentMonth, currentYear, OwnerID);
+
+        }
+
         public ResultMessage SaveExpense(SplitExpenseModel expenseModel)
         {
             throw new NotImplementedException();

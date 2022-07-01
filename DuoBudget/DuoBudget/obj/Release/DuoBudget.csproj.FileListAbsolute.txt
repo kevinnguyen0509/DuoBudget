@@ -1,6 +1,3 @@
-D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.Xml.XPath.XDocument.dll
-D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\VBCSCompiler.exe
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\DuoBudget.dll.config
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\DuoBudget.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\DuoBudget.pdb
@@ -13,6 +10,7 @@ D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\csi.rsp
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\Microsoft.CSharp.Core.targets
@@ -46,9 +44,11 @@ D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.ValueTuple.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.Xml.ReaderWriter.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.Xml.XmlDocument.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.Xml.XPath.dll
+D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\System.Xml.XPath.XDocument.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\vbc.exe
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\vbc.exe.config
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\vbc.rsp
+D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\VBCSCompiler.exe
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\roslyn\VBCSCompiler.exe.config
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Antlr3.Runtime.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -72,6 +72,7 @@ D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\System.Web.WebPages.Razor.xml
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Newtonsoft.Json.xml
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Antlr3.Runtime.pdb
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.AssemblyReference.cache
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CoreCompileInputs.cache
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CopyComplete
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.dll
