@@ -72,7 +72,6 @@ D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\System.Web.WebPages.Razor.xml
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Newtonsoft.Json.xml
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Antlr3.Runtime.pdb
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.AssemblyReference.cache
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CoreCompileInputs.cache
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CopyComplete
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.dll
