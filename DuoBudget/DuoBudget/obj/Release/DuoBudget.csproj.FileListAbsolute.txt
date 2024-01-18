@@ -76,3 +76,4 @@ D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CoreCo
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.CopyComplete
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.dll
 D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.pdb
+D:\GitProjects\DuoBudget\DuoBudget\DuoBudget\obj\Release\DuoBudget.csproj.AssemblyReference.cache

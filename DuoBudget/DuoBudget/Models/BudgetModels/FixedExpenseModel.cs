@@ -52,6 +52,7 @@ namespace DuoBudget.Models.BudgetModels
             if (Int32.Parse(DateTime.Now.ToString("MM")) == 1)
             {//If Its january then the last month will be 12 or December
                 curentMonth = 12;
+                currentYear = currentYear - 1;
             }
             else
             {
